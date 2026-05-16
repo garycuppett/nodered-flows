@@ -1,0 +1,12 @@
+{
+    "name": "nodered_flows",
+    "description": "Home Assistant Nodered Flows",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
+}
