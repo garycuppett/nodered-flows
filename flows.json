@@ -1718,7 +1718,9 @@
         "x": 790,
         "y": 620,
         "wires": [
-            []
+            [
+                "ac0000000000001"
+            ]
         ]
     },
     {
@@ -1749,7 +1751,9 @@
         "x": 790,
         "y": 720,
         "wires": [
-            []
+            [
+                "ac0000000000002"
+            ]
         ]
     },
     {
@@ -1780,7 +1784,9 @@
         "x": 810,
         "y": 840,
         "wires": [
-            []
+            [
+                "ac0000000000005"
+            ]
         ]
     },
     {
@@ -1811,7 +1817,9 @@
         "x": 810,
         "y": 940,
         "wires": [
-            []
+            [
+                "ac0000000000006"
+            ]
         ]
     },
     {
@@ -2032,7 +2040,9 @@
         "x": 810,
         "y": 900,
         "wires": [
-            []
+            [
+                "ac0000000000003"
+            ]
         ]
     },
     {
@@ -2063,7 +2073,9 @@
         "x": 810,
         "y": 1000,
         "wires": [
-            []
+            [
+                "ac0000000000004"
+            ]
         ]
     },
     {
@@ -2094,7 +2106,9 @@
         "x": 2190,
         "y": 280,
         "wires": [
-            []
+            [
+                "ac0000000000007"
+            ]
         ]
     },
     {
@@ -2125,7 +2139,9 @@
         "x": 2200,
         "y": 340,
         "wires": [
-            []
+            [
+                "ac0000000000008"
+            ]
         ]
     },
     {
@@ -2156,7 +2172,9 @@
         "x": 2200,
         "y": 380,
         "wires": [
-            []
+            [
+                "ac0000000000009"
+            ]
         ]
     },
     {
@@ -2311,7 +2329,9 @@
         "x": 2160,
         "y": 780,
         "wires": [
-            []
+            [
+                "ac000000000000a"
+            ]
         ]
     },
     {
@@ -2342,7 +2362,9 @@
         "x": 2150,
         "y": 920,
         "wires": [
-            []
+            [
+                "ac000000000000b"
+            ]
         ]
     },
     {
@@ -15077,5 +15099,159 @@
                 "c709d002df070f90"
             ]
         ]
+    },
+    {
+        "id": "ac0000000000001",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: dining/patio-on",
+        "topic": "e/test/ack/dining/patio-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000002",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: dining/patio-off",
+        "topic": "e/test/ack/dining/patio-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000003",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: upstairs-hall/loft-light-on",
+        "topic": "e/test/ack/upstairs-hall/loft-light-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000004",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: upstairs-hall/loft-light-off",
+        "topic": "e/test/ack/upstairs-hall/loft-light-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000005",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: upstairs-hall/loft-lamp-on",
+        "topic": "e/test/ack/upstairs-hall/loft-lamp-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000006",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: upstairs-hall/loft-lamp-off",
+        "topic": "e/test/ack/upstairs-hall/loft-lamp-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000007",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-toggle",
+        "topic": "e/test/ack/living-room/fan-toggle",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000008",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-off",
+        "topic": "e/test/ack/living-room/fan-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac0000000000009",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-on",
+        "topic": "e/test/ack/living-room/fan-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac000000000000a",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/switch-toggle",
+        "topic": "e/test/ack/living-room/switch-toggle",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "ac000000000000b",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/light-toggle",
+        "topic": "e/test/ack/living-room/light-toggle",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 0,
+        "y": 0,
+        "wires": [],
+        "x_test_only": true
     }
 ]
