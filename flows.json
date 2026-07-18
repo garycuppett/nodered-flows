@@ -16243,133 +16243,6 @@
         ]
     },
     {
-        "id": "a75c000000000050",
-        "type": "mqtt out",
-        "z": "e804bbde4f1485fb",
-        "name": "ack: workshop/fan-led-on",
-        "topic": "e/test/ack/workshop/fan-led-on",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 2020,
-        "y": 2220,
-        "wires": [],
-        "x_test_only": true
-    },
-    {
-        "id": "a75c000000000051",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Turn Fan LED On",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "zwave_js.set_config_parameter",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "switch.workshop_scene_switch_workshop_scene_switch_switch"
-        ],
-        "labelId": [],
-        "data": "{\"parameter\":3,\"value\":3}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "zwave_js",
-        "service": "set_config_parameter",
-        "x": 1680,
-        "y": 2220,
-        "wires": [
-            [
-                "a75c000000000050"
-            ]
-        ]
-    },
-    {
-        "id": "a75c000000000052",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Set Fan LED Green",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "zwave_js.set_config_parameter",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "switch.workshop_scene_switch_workshop_scene_switch_switch"
-        ],
-        "labelId": [],
-        "data": "{\"parameter\":8,\"value\":2}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "zwave_js",
-        "service": "set_config_parameter",
-        "x": 1340,
-        "y": 2220,
-        "wires": [
-            [
-                "a75c000000000051"
-            ]
-        ]
-    },
-    {
-        "id": "a75c000000000053",
-        "type": "mqtt out",
-        "z": "e804bbde4f1485fb",
-        "name": "ack: workshop/fan-led-off",
-        "topic": "e/test/ack/workshop/fan-led-off",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 1680,
-        "y": 2280,
-        "wires": [],
-        "x_test_only": true
-    },
-    {
-        "id": "a75c000000000054",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Turn Fan LED Off",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "zwave_js.set_config_parameter",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "switch.workshop_scene_switch_workshop_scene_switch_switch"
-        ],
-        "labelId": [],
-        "data": "{\"parameter\":3,\"value\":2}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "zwave_js",
-        "service": "set_config_parameter",
-        "x": 1340,
-        "y": 2280,
-        "wires": [
-            [
-                "a75c000000000053"
-            ]
-        ]
-    },
-    {
         "id": "a75c000000000055",
         "type": "server-state-changed",
         "z": "e804bbde4f1485fb",
@@ -16423,10 +16296,131 @@
         "y": 2240,
         "wires": [
             [
-                "a75c000000000052"
+                "a75d000000000005"
             ],
             [
-                "a75c000000000054"
+                "a75d000000000006"
+            ]
+        ]
+    },
+    {
+        "id": "a75d000000000001",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/configuration/endpoint_0/LED_Indicator_Color_Button_2/set",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1900,
+        "y": 2200,
+        "wires": []
+    },
+    {
+        "id": "a75d000000000002",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/configuration/endpoint_0/LED_Indicator_Button_2/set",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1900,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "a75d000000000003",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/configuration/endpoint_0/LED_Indicator_Button_2/set",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 2320,
+        "wires": []
+    },
+    {
+        "id": "a75d000000000004",
+        "type": "change",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan LED On",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"value\": 3}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1620,
+        "y": 2260,
+        "wires": [
+            [
+                "a75d000000000002"
+            ]
+        ]
+    },
+    {
+        "id": "a75d000000000005",
+        "type": "change",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan LED Green",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"value\": 2}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1340,
+        "y": 2220,
+        "wires": [
+            [
+                "a75d000000000001",
+                "a75d000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a75d000000000006",
+        "type": "change",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan LED Off",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"value\": 2}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1340,
+        "y": 2320,
+        "wires": [
+            [
+                "a75d000000000003"
             ]
         ]
     }
