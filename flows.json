@@ -1156,80 +1156,6 @@
         ]
     },
     {
-        "id": "d3890311ce0b25c1",
-        "type": "mqtt in",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/001",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "955da5c8365fe376",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1540,
-        "y": 320,
-        "wires": [
-            [
-                "f160c9761580f697"
-            ]
-        ]
-    },
-    {
-        "id": "f160c9761580f697",
-        "type": "switch",
-        "z": "e804bbde4f1485fb",
-        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
-        "property": "payload.value",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 1940,
-        "y": 320,
-        "wires": [
-            [
-                "c25302bbef4c9fb1"
-            ],
-            [],
-            [
-                "1c555116976a8269"
-            ],
-            [
-                "303c2a45a8a9d4c5"
-            ],
-            []
-        ]
-    },
-    {
         "id": "79b47ff220ca798d",
         "type": "comment",
         "z": "e804bbde4f1485fb",
@@ -1238,294 +1164,6 @@
         "x": 1360,
         "y": 180,
         "wires": []
-    },
-    {
-        "id": "47f032dbf1395c11",
-        "type": "mqtt in",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/002",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "955da5c8365fe376",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1540,
-        "y": 480,
-        "wires": [
-            [
-                "ef23ab6f1c596a71"
-            ]
-        ]
-    },
-    {
-        "id": "ef23ab6f1c596a71",
-        "type": "switch",
-        "z": "e804bbde4f1485fb",
-        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
-        "property": "payload.value",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 1940,
-        "y": 480,
-        "wires": [
-            [
-                "61f5e9c0cb0324ae"
-            ],
-            [],
-            [],
-            [
-                "f0b55b218ed05219"
-            ],
-            [
-                "f0b55b218ed05219"
-            ]
-        ]
-    },
-    {
-        "id": "bdf89184779ff942",
-        "type": "mqtt in",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/004",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "955da5c8365fe376",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1540,
-        "y": 620,
-        "wires": [
-            [
-                "a1e0b7e7f9a9bd71"
-            ]
-        ]
-    },
-    {
-        "id": "a1e0b7e7f9a9bd71",
-        "type": "switch",
-        "z": "e804bbde4f1485fb",
-        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
-        "property": "payload.value",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 1940,
-        "y": 620,
-        "wires": [
-            [
-                "2e46b388e27b3894"
-            ],
-            [],
-            [],
-            [
-                "a43ebe0825bbaef6"
-            ],
-            [
-                "a43ebe0825bbaef6"
-            ]
-        ]
-    },
-    {
-        "id": "e665438cc288849f",
-        "type": "mqtt in",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/003",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "955da5c8365fe376",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1540,
-        "y": 780,
-        "wires": [
-            [
-                "4933deb975e35a16"
-            ]
-        ]
-    },
-    {
-        "id": "4933deb975e35a16",
-        "type": "switch",
-        "z": "e804bbde4f1485fb",
-        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
-        "property": "payload.value",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 1940,
-        "y": 780,
-        "wires": [
-            [],
-            [],
-            [
-                "e9ae88b1bb822bd8"
-            ],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "6223a97fef439a6d",
-        "type": "mqtt in",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/005",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "955da5c8365fe376",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 1540,
-        "y": 940,
-        "wires": [
-            [
-                "c1caf32fc348407a"
-            ]
-        ]
-    },
-    {
-        "id": "c1caf32fc348407a",
-        "type": "switch",
-        "z": "e804bbde4f1485fb",
-        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
-        "property": "payload.value",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 1940,
-        "y": 940,
-        "wires": [
-            [
-                "262aa4649f1074d9"
-            ],
-            [],
-            [],
-            [],
-            []
-        ]
     },
     {
         "id": "b29cca410ce4f24f",
@@ -1726,326 +1364,6 @@
         ]
     },
     {
-        "id": "c25302bbef4c9fb1",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Toggle Living Room Fan",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.toggle",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "toggle",
-        "x": 2190,
-        "y": 280,
-        "wires": [
-            [
-                "ac0000000000007"
-            ]
-        ]
-    },
-    {
-        "id": "1c555116976a8269",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Force Off Living Room Fan",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.turn_off",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "turn_off",
-        "x": 2200,
-        "y": 340,
-        "wires": [
-            [
-                "ac0000000000008"
-            ]
-        ]
-    },
-    {
-        "id": "303c2a45a8a9d4c5",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Force On Living Room Fan",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.turn_on",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "turn_on",
-        "x": 2200,
-        "y": 380,
-        "wires": [
-            [
-                "ac0000000000009"
-            ]
-        ]
-    },
-    {
-        "id": "7290531cd2228c1b",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Increase Living Room Fan Speed",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.increase_speed",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "{\"percentage_step\":25}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "increase_speed",
-        "x": 2520,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2e46b388e27b3894",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Decrease Living Room Fan Speed",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.decrease_speed",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "{\"percentage_step\":25}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "decrease_speed",
-        "x": 2220,
-        "y": 580,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f0b55b218ed05219",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Set Living Room Fan Direction Forward",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.set_direction",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "{\"direction\":\"forward\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "set_direction",
-        "x": 2240,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a43ebe0825bbaef6",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Set Living Room Fan Direction Reverse",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.set_direction",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "{\"direction\":\"reverse\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "set_direction",
-        "x": 2240,
-        "y": 660,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e9ae88b1bb822bd8",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Toggle Switch",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "switch.toggle",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "switch.living_room_scene_switch_living_room_scene_switch_switch"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "switch",
-        "service": "toggle",
-        "x": 2160,
-        "y": 780,
-        "wires": [
-            [
-                "ac000000000000a"
-            ]
-        ]
-    },
-    {
-        "id": "262aa4649f1074d9",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Toggle Light",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "light.toggle",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "light.simpleconnect_fan_2454a1_living_room_light"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "light",
-        "service": "toggle",
-        "x": 2150,
-        "y": 920,
-        "wires": [
-            [
-                "ac000000000000b"
-            ]
-        ]
-    },
-    {
-        "id": "e534656659c942fe",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Turn on Living Room Fan",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "fan.turn_on",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "fan.simpleconnect_fan_2454a1_living_room_fan"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "fan",
-        "service": "turn_on",
-        "x": 2490,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "80979bcf9948426b",
         "type": "api-call-service",
         "z": "e804bbde4f1485fb",
@@ -2079,209 +1397,6 @@
         "y": 360,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "8f82ba43eab80b35",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Set LED 1 Green",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "number.set_value",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "number.living_room_scene_switch_living_room_scene_switch_config_number_7"
-        ],
-        "labelId": [],
-        "data": "{\"value\":2}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "number",
-        "service": "set_value",
-        "x": 2710,
-        "y": 200,
-        "wires": [
-            [
-                "0de34c708897f11f"
-            ]
-        ]
-    },
-    {
-        "id": "0de34c708897f11f",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Turn LED 1 on",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "number.set_value",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "number.living_room_scene_switch_living_room_scene_switch_config_number_2"
-        ],
-        "labelId": [],
-        "data": "{\"value\":3}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "number",
-        "service": "set_value",
-        "x": 2920,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9efac85fbc5f2982",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Turn LED 1 off",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "number.set_value",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "number.living_room_scene_switch_living_room_scene_switch_config_number_2"
-        ],
-        "labelId": [],
-        "data": "{\"value\":2}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "number",
-        "service": "set_value",
-        "x": 2720,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "61f5e9c0cb0324ae",
-        "type": "api-current-state",
-        "z": "e804bbde4f1485fb",
-        "name": "Fan is off",
-        "server": "fc3c38fd.04c728",
-        "version": 3,
-        "outputs": 2,
-        "halt_if": "off",
-        "halt_if_type": "str",
-        "halt_if_compare": "is",
-        "entity_id": "fan.simpleconnect_fan_2454a1_living_room_fan",
-        "state_type": "str",
-        "blockInputOverrides": true,
-        "outputProperties": [
-            {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            },
-            {
-                "property": "data",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entity"
-            }
-        ],
-        "for": "0",
-        "forType": "num",
-        "forUnits": "minutes",
-        "override_topic": false,
-        "state_location": "payload",
-        "override_payload": "msg",
-        "entity_location": "data",
-        "override_data": "msg",
-        "x": 2140,
-        "y": 440,
-        "wires": [
-            [
-                "e534656659c942fe"
-            ],
-            [
-                "7290531cd2228c1b"
-            ]
-        ]
-    },
-    {
-        "id": "26f850f2d17cd137",
-        "type": "server-state-changed",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "server": "fc3c38fd.04c728",
-        "version": 6,
-        "outputs": 2,
-        "exposeAsEntityConfig": "",
-        "entities": {
-            "entity": [
-                "fan.simpleconnect_fan_2454a1_living_room_fan"
-            ],
-            "substring": [],
-            "regex": []
-        },
-        "outputInitially": false,
-        "stateType": "str",
-        "ifState": "on",
-        "ifStateType": "str",
-        "ifStateOperator": "is",
-        "outputOnlyOnStateChange": true,
-        "for": "0",
-        "forType": "num",
-        "forUnits": "minutes",
-        "ignorePrevStateNull": false,
-        "ignorePrevStateUnknown": false,
-        "ignorePrevStateUnavailable": false,
-        "ignoreCurrentStateUnknown": false,
-        "ignoreCurrentStateUnavailable": false,
-        "outputProperties": [
-            {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "entityState"
-            },
-            {
-                "property": "data",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "eventData"
-            },
-            {
-                "property": "topic",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "triggerId"
-            }
-        ],
-        "x": 2310,
-        "y": 200,
-        "wires": [
-            [
-                "8f82ba43eab80b35"
-            ],
-            [
-                "9efac85fbc5f2982"
-            ]
         ]
     },
     {
@@ -14829,76 +13944,6 @@
         "x_test_only": true
     },
     {
-        "id": "ac0000000000007",
-        "type": "mqtt out",
-        "z": "e804bbde4f1485fb",
-        "name": "ack: living-room/fan-toggle",
-        "topic": "e/test/ack/living-room/fan-toggle",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 0,
-        "y": 0,
-        "wires": [],
-        "x_test_only": true
-    },
-    {
-        "id": "ac0000000000008",
-        "type": "mqtt out",
-        "z": "e804bbde4f1485fb",
-        "name": "ack: living-room/fan-off",
-        "topic": "e/test/ack/living-room/fan-off",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 0,
-        "y": 0,
-        "wires": [],
-        "x_test_only": true
-    },
-    {
-        "id": "ac0000000000009",
-        "type": "mqtt out",
-        "z": "e804bbde4f1485fb",
-        "name": "ack: living-room/fan-on",
-        "topic": "e/test/ack/living-room/fan-on",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 0,
-        "y": 0,
-        "wires": [],
-        "x_test_only": true
-    },
-    {
-        "id": "ac000000000000a",
-        "type": "mqtt out",
-        "z": "e804bbde4f1485fb",
-        "name": "ack: living-room/switch-toggle",
-        "topic": "e/test/ack/living-room/switch-toggle",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 0,
-        "y": 0,
-        "wires": [],
-        "x_test_only": true
-    },
-    {
-        "id": "ac000000000000b",
-        "type": "mqtt out",
-        "z": "e804bbde4f1485fb",
-        "name": "ack: living-room/light-toggle",
-        "topic": "e/test/ack/living-room/light-toggle",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 0,
-        "y": 0,
-        "wires": [],
-        "x_test_only": true
-    },
-    {
         "id": "de015ec1ea100001",
         "type": "server-state-changed",
         "z": "9522de656232ba7a",
@@ -16389,6 +15434,2829 @@
             ],
             [
                 "a75e000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000001",
+        "type": "comment",
+        "z": "e804bbde4f1485fb",
+        "name": "Living Room Scene Switch (ZEN32) — canonical: left=light right=fan top=more bottom=less big=room",
+        "info": "",
+        "x": 400,
+        "y": 2340
+    },
+    {
+        "id": "a760000000000002",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/light-step-up",
+        "topic": "e/test/ack/living-room/light-step-up",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2400,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000003",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Step Up Living Room Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_2454a1_living_room_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_step_pct\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 2400,
+        "wires": [
+            [
+                "a760000000000002"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000004",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/light-full",
+        "topic": "e/test/ack/living-room/light-full",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2460,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000005",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Living Room Light Full",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_2454a1_living_room_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 2460,
+        "wires": [
+            [
+                "a760000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000006",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 2420,
+        "wires": [
+            [
+                "a760000000000003"
+            ],
+            [],
+            [
+                "a760000000000005"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000007",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/001",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 2420,
+        "wires": [
+            [
+                "a760000000000006"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000008",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/light-step-down",
+        "topic": "e/test/ack/living-room/light-step-down",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2540,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000009",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Step Down Living Room Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_2454a1_living_room_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_step_pct\":-25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 2540,
+        "wires": [
+            [
+                "a760000000000008"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000010",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/light-min",
+        "topic": "e/test/ack/living-room/light-min",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2600,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000011",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Living Room Light Minimum",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_2454a1_living_room_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":10}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 2600,
+        "wires": [
+            [
+                "a760000000000010"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000012",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 2560,
+        "wires": [
+            [
+                "a760000000000009"
+            ],
+            [],
+            [
+                "a760000000000011"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000013",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/003",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 2560,
+        "wires": [
+            [
+                "a760000000000012"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000014",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-on",
+        "topic": "e/test/ack/living-room/fan-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 2660,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000015",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn on Living Room Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_on",
+        "x": 1340,
+        "y": 2660,
+        "wires": [
+            [
+                "a760000000000014"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000016",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-step-up",
+        "topic": "e/test/ack/living-room/fan-step-up",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 2720,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000017",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Increase Living Room Fan Speed",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.increase_speed",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage_step\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "increase_speed",
+        "x": 1340,
+        "y": 2720,
+        "wires": [
+            [
+                "a760000000000016"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000018",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Living Room Fan is off",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "fan.simpleconnect_fan_2454a1_living_room_fan",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1000,
+        "y": 2680,
+        "wires": [
+            [
+                "a760000000000015"
+            ],
+            [
+                "a760000000000017"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000019",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-max",
+        "topic": "e/test/ack/living-room/fan-max",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2760,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000020",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Living Room Fan Max",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_percentage",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_percentage",
+        "x": 1000,
+        "y": 2760,
+        "wires": [
+            [
+                "a760000000000019"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000021",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-forward",
+        "topic": "e/test/ack/living-room/fan-forward",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2820,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000022",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Living Room Fan Air Up (forward)",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_direction",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "{\"direction\":\"forward\"}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_direction",
+        "x": 1000,
+        "y": 2820,
+        "wires": [
+            [
+                "a760000000000021"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000023",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 2720,
+        "wires": [
+            [
+                "a760000000000018"
+            ],
+            [],
+            [
+                "a760000000000020"
+            ],
+            [
+                "a760000000000022"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000024",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/002",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 2720,
+        "wires": [
+            [
+                "a760000000000023"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000025",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-step-down",
+        "topic": "e/test/ack/living-room/fan-step-down",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2900,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000026",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Decrease Living Room Fan Speed",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.decrease_speed",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage_step\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "decrease_speed",
+        "x": 1000,
+        "y": 2900,
+        "wires": [
+            [
+                "a760000000000025"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000027",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-off",
+        "topic": "e/test/ack/living-room/fan-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2960,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000028",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn off Living Room Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 2960,
+        "wires": [
+            [
+                "a760000000000027"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000029",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/fan-reverse",
+        "topic": "e/test/ack/living-room/fan-reverse",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3020,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000030",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Living Room Fan Air Down (reverse)",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_direction",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "{\"direction\":\"reverse\"}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_direction",
+        "x": 1000,
+        "y": 3020,
+        "wires": [
+            [
+                "a760000000000029"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000031",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 2960,
+        "wires": [
+            [
+                "a760000000000026"
+            ],
+            [],
+            [
+                "a760000000000028"
+            ],
+            [
+                "a760000000000030"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000032",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/004",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 2960,
+        "wires": [
+            [
+                "a760000000000031"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000033",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/light-toggle",
+        "topic": "e/test/ack/living-room/light-toggle",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3100,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000034",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Toggle Living Room Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.toggle",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_2454a1_living_room_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "toggle",
+        "x": 1000,
+        "y": 3100,
+        "wires": [
+            [
+                "a760000000000033"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000035",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/all-off-light",
+        "topic": "e/test/ack/living-room/all-off-light",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3160,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000036",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All Off - Living Room Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_2454a1_living_room_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 3160,
+        "wires": [
+            [
+                "a760000000000035"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000037",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/all-off-fan",
+        "topic": "e/test/ack/living-room/all-off-fan",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3220,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000038",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All Off - Living Room Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 3220,
+        "wires": [
+            [
+                "a760000000000037"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000039",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/all-on-light",
+        "topic": "e/test/ack/living-room/all-on-light",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3280,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000040",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All On - Living Room Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_2454a1_living_room_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 3280,
+        "wires": [
+            [
+                "a760000000000039"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000041",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/all-on-fan",
+        "topic": "e/test/ack/living-room/all-on-fan",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3340,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000042",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All On - Living Room Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_2454a1_living_room_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 3340,
+        "wires": [
+            [
+                "a760000000000041"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000043",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: living-room/relay-toggle",
+        "topic": "e/test/ack/living-room/relay-toggle",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3400,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000044",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Toggle Living Room Utility Relay",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.toggle",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.living_room_scene_switch_living_room_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "toggle",
+        "x": 1000,
+        "y": 3400,
+        "wires": [
+            [
+                "a760000000000043"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000045",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 3220,
+        "wires": [
+            [
+                "a760000000000034"
+            ],
+            [],
+            [
+                "a760000000000036",
+                "a760000000000038"
+            ],
+            [
+                "a760000000000040",
+                "a760000000000042"
+            ],
+            [
+                "a760000000000044"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000046",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Living_Room_Scene_Switch/central_scene/endpoint_0/scene/005",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 3220,
+        "wires": [
+            [
+                "a760000000000045"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000047",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Living_Room_Scene_Switch/configuration/endpoint_0/LED_Indicator_Color_Button_2/set",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1960,
+        "y": 3460,
+        "wires": []
+    },
+    {
+        "id": "a760000000000048",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Living_Room_Scene_Switch/configuration/endpoint_0/LED_Indicator_Button_2/set",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1960,
+        "y": 3540,
+        "wires": []
+    },
+    {
+        "id": "a760000000000049",
+        "type": "rbe",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1720,
+        "y": 3460,
+        "wires": [
+            [
+                "a760000000000047"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000050",
+        "type": "rbe",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1720,
+        "y": 3540,
+        "wires": [
+            [
+                "a760000000000048"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000051",
+        "type": "function",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan Speed -> LED Color",
+        "func": "const state = msg.payload;\nconst ns = msg.data && msg.data.new_state;\nconst pct = ns && ns.attributes ? ns.attributes.percentage : null;\nif (state !== \"on\") {\n    // fan off (or unavailable): LED always-off; color irrelevant\n    return [null, { payload: { value: 2 } }];\n}\nlet color;\nif (pct === null || pct <= 25) color = 1;      // blue - low\nelse if (pct <= 50) color = 2;                 // green - medium\nelse if (pct <= 75) color = 5;                 // yellow - high\nelse color = 3;                                // red - max\nreturn [{ payload: { value: color } }, { payload: { value: 3 } }];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 3500,
+        "wires": [
+            [
+                "a760000000000049"
+            ],
+            [
+                "a760000000000050"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000052",
+        "type": "server-state-changed",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "fan.simpleconnect_fan_2454a1_living_room_fan"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "on",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 1000,
+        "y": 3500,
+        "wires": [
+            [
+                "a760000000000051"
+            ],
+            [
+                "a760000000000051"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000053",
+        "type": "comment",
+        "z": "e804bbde4f1485fb",
+        "name": "Loft Scene Switch (ZEN32) — canonical: left=light right=fan top=more bottom=less big=room",
+        "info": "",
+        "x": 400,
+        "y": 3740
+    },
+    {
+        "id": "a760000000000054",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/light-step-up",
+        "topic": "e/test/ack/loft/light-step-up",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3800,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000055",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Step Up Loft Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_24210c_loft_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_step_pct\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 3800,
+        "wires": [
+            [
+                "a760000000000054"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000056",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/light-full",
+        "topic": "e/test/ack/loft/light-full",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3860,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000057",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Loft Light Full",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_24210c_loft_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 3860,
+        "wires": [
+            [
+                "a760000000000056"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000058",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 3820,
+        "wires": [
+            [
+                "a760000000000055"
+            ],
+            [],
+            [
+                "a760000000000057"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000059",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Loft_Scene_Switch/central_scene/endpoint_0/scene/001",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 3820,
+        "wires": [
+            [
+                "a760000000000058"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000060",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/light-step-down",
+        "topic": "e/test/ack/loft/light-step-down",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 3940,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000061",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Step Down Loft Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_24210c_loft_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_step_pct\":-25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 3940,
+        "wires": [
+            [
+                "a760000000000060"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000062",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/light-min",
+        "topic": "e/test/ack/loft/light-min",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4000,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000063",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Loft Light Minimum",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_24210c_loft_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":10}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 4000,
+        "wires": [
+            [
+                "a760000000000062"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000064",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 3960,
+        "wires": [
+            [
+                "a760000000000061"
+            ],
+            [],
+            [
+                "a760000000000063"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000065",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Loft_Scene_Switch/central_scene/endpoint_0/scene/003",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 3960,
+        "wires": [
+            [
+                "a760000000000064"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000066",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/fan-on",
+        "topic": "e/test/ack/loft/fan-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 4060,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000067",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn on Loft Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_on",
+        "x": 1340,
+        "y": 4060,
+        "wires": [
+            [
+                "a760000000000066"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000068",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/fan-step-up",
+        "topic": "e/test/ack/loft/fan-step-up",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 4120,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000069",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Increase Loft Fan Speed",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.increase_speed",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage_step\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "increase_speed",
+        "x": 1340,
+        "y": 4120,
+        "wires": [
+            [
+                "a760000000000068"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000070",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Loft Fan is off",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "fan.simpleconnect_fan_24210c_loft_fan",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1000,
+        "y": 4080,
+        "wires": [
+            [
+                "a760000000000067"
+            ],
+            [
+                "a760000000000069"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000071",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/fan-max",
+        "topic": "e/test/ack/loft/fan-max",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4160,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000072",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Loft Fan Max",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_percentage",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_percentage",
+        "x": 1000,
+        "y": 4160,
+        "wires": [
+            [
+                "a760000000000071"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000073",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/fan-forward",
+        "topic": "e/test/ack/loft/fan-forward",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4220,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000074",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Loft Fan Air Up (forward)",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_direction",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "{\"direction\":\"forward\"}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_direction",
+        "x": 1000,
+        "y": 4220,
+        "wires": [
+            [
+                "a760000000000073"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000075",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 4120,
+        "wires": [
+            [
+                "a760000000000070"
+            ],
+            [],
+            [
+                "a760000000000072"
+            ],
+            [
+                "a760000000000074"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000076",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Loft_Scene_Switch/central_scene/endpoint_0/scene/002",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 4120,
+        "wires": [
+            [
+                "a760000000000075"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000077",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/fan-step-down",
+        "topic": "e/test/ack/loft/fan-step-down",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4300,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000078",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Decrease Loft Fan Speed",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.decrease_speed",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage_step\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "decrease_speed",
+        "x": 1000,
+        "y": 4300,
+        "wires": [
+            [
+                "a760000000000077"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000079",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/fan-off",
+        "topic": "e/test/ack/loft/fan-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4360,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000080",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn off Loft Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 4360,
+        "wires": [
+            [
+                "a760000000000079"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000081",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/fan-reverse",
+        "topic": "e/test/ack/loft/fan-reverse",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4420,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000082",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Loft Fan Air Down (reverse)",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_direction",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "{\"direction\":\"reverse\"}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_direction",
+        "x": 1000,
+        "y": 4420,
+        "wires": [
+            [
+                "a760000000000081"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000083",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 4360,
+        "wires": [
+            [
+                "a760000000000078"
+            ],
+            [],
+            [
+                "a760000000000080"
+            ],
+            [
+                "a760000000000082"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a760000000000084",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Loft_Scene_Switch/central_scene/endpoint_0/scene/004",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 4360,
+        "wires": [
+            [
+                "a760000000000083"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000085",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/light-toggle",
+        "topic": "e/test/ack/loft/light-toggle",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4500,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000086",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Toggle Loft Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.toggle",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_24210c_loft_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "toggle",
+        "x": 1000,
+        "y": 4500,
+        "wires": [
+            [
+                "a760000000000085"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000087",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/all-off-light",
+        "topic": "e/test/ack/loft/all-off-light",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4560,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000088",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All Off - Loft Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_24210c_loft_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 4560,
+        "wires": [
+            [
+                "a760000000000087"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000089",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/all-off-fan",
+        "topic": "e/test/ack/loft/all-off-fan",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4620,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000090",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All Off - Loft Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 4620,
+        "wires": [
+            [
+                "a760000000000089"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000091",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/all-on-light",
+        "topic": "e/test/ack/loft/all-on-light",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4680,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000092",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All On - Loft Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_24210c_loft_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 4680,
+        "wires": [
+            [
+                "a760000000000091"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000093",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/all-on-fan",
+        "topic": "e/test/ack/loft/all-on-fan",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4740,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000094",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All On - Loft Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_24210c_loft_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 4740,
+        "wires": [
+            [
+                "a760000000000093"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000095",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/relay-on",
+        "topic": "e/test/ack/loft/relay-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 2240,
+        "y": 4800,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000096",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan Receiver Power On",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.loft_scene_switch_loft_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "x": 1900,
+        "y": 4800,
+        "wires": [
+            [
+                "a760000000000095"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000097",
+        "type": "delay",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1650,
+        "y": 4800,
+        "wires": [
+            [
+                "a760000000000096"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000098",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: loft/relay-off",
+        "topic": "e/test/ack/loft/relay-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 4800,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a760000000000099",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan Receiver Power Off",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.loft_scene_switch_loft_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 4800,
+        "wires": [
+            [
+                "a760000000000098",
+                "a760000000000097"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000100",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 4620,
+        "wires": [
+            [
+                "a760000000000086"
+            ],
+            [],
+            [
+                "a760000000000088",
+                "a760000000000090"
+            ],
+            [
+                "a760000000000092",
+                "a760000000000094"
+            ],
+            [
+                "a760000000000099"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000101",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Loft_Scene_Switch/central_scene/endpoint_0/scene/005",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 4620,
+        "wires": [
+            [
+                "a760000000000100"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000102",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Loft_Scene_Switch/configuration/endpoint_0/LED_Indicator_Color_Button_2/set",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1960,
+        "y": 4860,
+        "wires": []
+    },
+    {
+        "id": "a760000000000103",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Loft_Scene_Switch/configuration/endpoint_0/LED_Indicator_Button_2/set",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1960,
+        "y": 4940,
+        "wires": []
+    },
+    {
+        "id": "a760000000000104",
+        "type": "rbe",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1720,
+        "y": 4860,
+        "wires": [
+            [
+                "a760000000000102"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000105",
+        "type": "rbe",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1720,
+        "y": 4940,
+        "wires": [
+            [
+                "a760000000000103"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000106",
+        "type": "function",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan Speed -> LED Color",
+        "func": "const state = msg.payload;\nconst ns = msg.data && msg.data.new_state;\nconst pct = ns && ns.attributes ? ns.attributes.percentage : null;\nif (state !== \"on\") {\n    // fan off (or unavailable): LED always-off; color irrelevant\n    return [null, { payload: { value: 2 } }];\n}\nlet color;\nif (pct === null || pct <= 25) color = 1;      // blue - low\nelse if (pct <= 50) color = 2;                 // green - medium\nelse if (pct <= 75) color = 5;                 // yellow - high\nelse color = 3;                                // red - max\nreturn [{ payload: { value: color } }, { payload: { value: 3 } }];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 4900,
+        "wires": [
+            [
+                "a760000000000104"
+            ],
+            [
+                "a760000000000105"
+            ]
+        ]
+    },
+    {
+        "id": "a760000000000107",
+        "type": "server-state-changed",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "fan.simpleconnect_fan_24210c_loft_fan"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "on",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 1000,
+        "y": 4900,
+        "wires": [
+            [
+                "a760000000000106"
+            ],
+            [
+                "a760000000000106"
             ]
         ]
     }
