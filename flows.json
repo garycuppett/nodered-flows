@@ -3944,7 +3944,7 @@
         "type": "switch",
         "z": "9522de656232ba7a",
         "name": "Motion Sensor/Always On/Always Off",
-        "property": "payload.option",
+        "property": "payload",
         "propertyType": "msg",
         "rules": [
             {
@@ -3981,7 +3981,7 @@
         "type": "switch",
         "z": "9522de656232ba7a",
         "name": "Motion Sensor/Always On/Always Off",
-        "property": "payload.option",
+        "property": "payload",
         "propertyType": "msg",
         "rules": [
             {
@@ -4993,13 +4993,10 @@
         "y": 1920,
         "wires": [
             [
-                "5f474ce696ae4b75",
-                "960b98016dc060fb"
+                "5f474ce696ae4b75"
             ],
             [
-                "2ff888371556199c",
-                "c9406374b4687047",
-                "4a5f41b6fe8ffa18"
+                "2ff888371556199c"
             ]
         ]
     },
