@@ -4037,11 +4037,11 @@
         "id": "2933848a9772c2da",
         "type": "api-call-service",
         "z": "9522de656232ba7a",
-        "name": "Turn on Full",
+        "name": "Turn on Garage Light",
         "server": "fc3c38fd.04c728",
         "version": 7,
         "debugenabled": false,
-        "action": "light.turn_on",
+        "action": "switch.turn_on",
         "floorId": [],
         "areaId": [],
         "deviceId": [],
@@ -4049,14 +4049,14 @@
             "switch.garage_garage_switch"
         ],
         "labelId": [],
-        "data": "{\"brightness_pct\":\"100\"}",
+        "data": "",
         "dataType": "jsonata",
         "mergeContext": "",
         "mustacheAltTags": false,
         "outputProperties": [],
         "queue": "none",
         "blockInputOverrides": false,
-        "domain": "light",
+        "domain": "switch",
         "service": "turn_on",
         "x": 310,
         "y": 1640,
@@ -4072,7 +4072,7 @@
         "server": "fc3c38fd.04c728",
         "version": 7,
         "debugenabled": false,
-        "action": "light.turn_off",
+        "action": "switch.turn_off",
         "floorId": [],
         "areaId": [],
         "deviceId": [],
@@ -4087,7 +4087,7 @@
         "outputProperties": [],
         "queue": "none",
         "blockInputOverrides": false,
-        "domain": "light",
+        "domain": "switch",
         "service": "turn_off",
         "x": 820,
         "y": 1400,
@@ -4535,7 +4535,7 @@
         "exposeAsEntityConfig": "",
         "entities": {
             "entity": [
-                "switch.garage_garage_switch"
+                "binary_sensor.garage_garage_motion_sensor_status"
             ],
             "substring": [],
             "regex": []
