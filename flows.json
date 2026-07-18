@@ -4535,7 +4535,7 @@
         "exposeAsEntityConfig": "",
         "entities": {
             "entity": [
-                "binary_sensor.garage_garage_motion_sensor_status"
+                "binary_sensor.garage_any_motion"
             ],
             "substring": [],
             "regex": []
