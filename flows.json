@@ -14943,5 +14943,1491 @@
                 "c9406374b4687047"
             ]
         ]
+    },
+    {
+        "id": "a75c000000000001",
+        "type": "comment",
+        "z": "e804bbde4f1485fb",
+        "name": "Workshop Scene Switch (ZEN32) — left=light right=fan top=more bottom=less big=room",
+        "info": "",
+        "x": 400,
+        "y": 1080
+    },
+    {
+        "id": "a75c000000000002",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/light-step-up",
+        "topic": "e/test/ack/workshop/light-step-up",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1140,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000003",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Step Up Workshop Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_fb1f4c_workshop_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_step_pct\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 1140,
+        "wires": [
+            [
+                "a75c000000000002"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000004",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/light-full",
+        "topic": "e/test/ack/workshop/light-full",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1200,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000005",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Workshop Light Full",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_fb1f4c_workshop_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 1200,
+        "wires": [
+            [
+                "a75c000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000006",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 1160,
+        "wires": [
+            [
+                "a75c000000000003"
+            ],
+            [],
+            [
+                "a75c000000000005"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a75c000000000007",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/central_scene/endpoint_0/scene/001",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1160,
+        "wires": [
+            [
+                "a75c000000000006"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000008",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/light-step-down",
+        "topic": "e/test/ack/workshop/light-step-down",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1280,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000009",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Step Down Workshop Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_fb1f4c_workshop_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_step_pct\":-25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 1280,
+        "wires": [
+            [
+                "a75c000000000008"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000010",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/light-min",
+        "topic": "e/test/ack/workshop/light-min",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1340,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000011",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Workshop Light Minimum",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_fb1f4c_workshop_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":10}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 1340,
+        "wires": [
+            [
+                "a75c000000000010"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000012",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 1300,
+        "wires": [
+            [
+                "a75c000000000009"
+            ],
+            [],
+            [
+                "a75c000000000011"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a75c000000000013",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/central_scene/endpoint_0/scene/003",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1300,
+        "wires": [
+            [
+                "a75c000000000012"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000014",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-on",
+        "topic": "e/test/ack/workshop/fan-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 1400,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000015",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn on Workshop Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_on",
+        "x": 1340,
+        "y": 1400,
+        "wires": [
+            [
+                "a75c000000000014"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000016",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-step-up",
+        "topic": "e/test/ack/workshop/fan-step-up",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 1460,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000017",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Increase Workshop Fan Speed",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.increase_speed",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage_step\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "increase_speed",
+        "x": 1340,
+        "y": 1460,
+        "wires": [
+            [
+                "a75c000000000016"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000018",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Workshop Fan is off",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "off",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "fan.simpleconnect_fan_fb1f4c_workshop_fan",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1000,
+        "y": 1420,
+        "wires": [
+            [
+                "a75c000000000015"
+            ],
+            [
+                "a75c000000000017"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000019",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-max",
+        "topic": "e/test/ack/workshop/fan-max",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1500,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000020",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Workshop Fan Max",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_percentage",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_percentage",
+        "x": 1000,
+        "y": 1500,
+        "wires": [
+            [
+                "a75c000000000019"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000021",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-forward",
+        "topic": "e/test/ack/workshop/fan-forward",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1560,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000022",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Workshop Fan Direction Forward",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_direction",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "{\"direction\":\"forward\"}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_direction",
+        "x": 1000,
+        "y": 1560,
+        "wires": [
+            [
+                "a75c000000000021"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000023",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 1460,
+        "wires": [
+            [
+                "a75c000000000018"
+            ],
+            [],
+            [
+                "a75c000000000020"
+            ],
+            [
+                "a75c000000000022"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a75c000000000024",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/central_scene/endpoint_0/scene/002",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1460,
+        "wires": [
+            [
+                "a75c000000000023"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000025",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-step-down",
+        "topic": "e/test/ack/workshop/fan-step-down",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1640,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000026",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Decrease Workshop Fan Speed",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.decrease_speed",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "{\"percentage_step\":25}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "decrease_speed",
+        "x": 1000,
+        "y": 1640,
+        "wires": [
+            [
+                "a75c000000000025"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000027",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-off",
+        "topic": "e/test/ack/workshop/fan-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1700,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000028",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn off Workshop Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 1700,
+        "wires": [
+            [
+                "a75c000000000027"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000029",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-reverse",
+        "topic": "e/test/ack/workshop/fan-reverse",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1760,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000030",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Workshop Fan Direction Reverse",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.set_direction",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "{\"direction\":\"reverse\"}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "set_direction",
+        "x": 1000,
+        "y": 1760,
+        "wires": [
+            [
+                "a75c000000000029"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000031",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 1700,
+        "wires": [
+            [
+                "a75c000000000026"
+            ],
+            [],
+            [
+                "a75c000000000028"
+            ],
+            [
+                "a75c000000000030"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a75c000000000032",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/central_scene/endpoint_0/scene/004",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1700,
+        "wires": [
+            [
+                "a75c000000000031"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000033",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/light-toggle",
+        "topic": "e/test/ack/workshop/light-toggle",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1840,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000034",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Toggle Workshop Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.toggle",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_fb1f4c_workshop_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "toggle",
+        "x": 1000,
+        "y": 1840,
+        "wires": [
+            [
+                "a75c000000000033"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000035",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/all-off-light",
+        "topic": "e/test/ack/workshop/all-off-light",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1900,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000036",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All Off - Workshop Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_fb1f4c_workshop_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 1900,
+        "wires": [
+            [
+                "a75c000000000035"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000037",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/all-off-fan",
+        "topic": "e/test/ack/workshop/all-off-fan",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 1960,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000038",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All Off - Workshop Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 1960,
+        "wires": [
+            [
+                "a75c000000000037"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000039",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/all-on-light",
+        "topic": "e/test/ack/workshop/all-on-light",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2020,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000040",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All On - Workshop Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "light.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_fb1f4c_workshop_light"
+        ],
+        "labelId": [],
+        "data": "{\"brightness_pct\":100}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "light",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 2020,
+        "wires": [
+            [
+                "a75c000000000039"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000041",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/all-on-fan",
+        "topic": "e/test/ack/workshop/all-on-fan",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2080,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000042",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "All On - Workshop Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "fan.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "fan",
+        "service": "turn_on",
+        "x": 1000,
+        "y": 2080,
+        "wires": [
+            [
+                "a75c000000000041"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000043",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/relay-on",
+        "topic": "e/test/ack/workshop/relay-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 2240,
+        "y": 2140,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000044",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan Receiver Power On",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.workshop_scene_switch_workshop_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "x": 1900,
+        "y": 2140,
+        "wires": [
+            [
+                "a75c000000000043"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000045",
+        "type": "delay",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1650,
+        "y": 2140,
+        "wires": [
+            [
+                "a75c000000000044"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000046",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/relay-off",
+        "topic": "e/test/ack/workshop/relay-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1340,
+        "y": 2140,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000047",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Fan Receiver Power Off",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.workshop_scene_switch_workshop_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_off",
+        "x": 1000,
+        "y": 2140,
+        "wires": [
+            [
+                "a75c000000000046",
+                "a75c000000000045"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000048",
+        "type": "switch",
+        "z": "e804bbde4f1485fb",
+        "name": "Key Tapped\\n Key Released \\n Key Held Down \\n Key Pressed 2x \\n Key Pressed 3x",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 560,
+        "y": 1960,
+        "wires": [
+            [
+                "a75c000000000034"
+            ],
+            [],
+            [
+                "a75c000000000036",
+                "a75c000000000038"
+            ],
+            [
+                "a75c000000000040",
+                "a75c000000000042"
+            ],
+            [
+                "a75c000000000047"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000049",
+        "type": "mqtt in",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Workshop_Scene_Switch/central_scene/endpoint_0/scene/005",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 1960,
+        "wires": [
+            [
+                "a75c000000000048"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000050",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-led-on",
+        "topic": "e/test/ack/workshop/fan-led-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 2020,
+        "y": 2220,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000051",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn Fan LED On",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "zwave_js.set_config_parameter",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.workshop_scene_switch_workshop_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "{\"parameter\":3,\"value\":3}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "zwave_js",
+        "service": "set_config_parameter",
+        "x": 1680,
+        "y": 2220,
+        "wires": [
+            [
+                "a75c000000000050"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000052",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Set Fan LED Green",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "zwave_js.set_config_parameter",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.workshop_scene_switch_workshop_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "{\"parameter\":8,\"value\":2}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "zwave_js",
+        "service": "set_config_parameter",
+        "x": 1340,
+        "y": 2220,
+        "wires": [
+            [
+                "a75c000000000051"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000053",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "ack: workshop/fan-led-off",
+        "topic": "e/test/ack/workshop/fan-led-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1680,
+        "y": 2280,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a75c000000000054",
+        "type": "api-call-service",
+        "z": "e804bbde4f1485fb",
+        "name": "Turn Fan LED Off",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "zwave_js.set_config_parameter",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.workshop_scene_switch_workshop_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "{\"parameter\":3,\"value\":2}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "zwave_js",
+        "service": "set_config_parameter",
+        "x": 1340,
+        "y": 2280,
+        "wires": [
+            [
+                "a75c000000000053"
+            ]
+        ]
+    },
+    {
+        "id": "a75c000000000055",
+        "type": "server-state-changed",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "fan.simpleconnect_fan_fb1f4c_workshop_fan"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "on",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 1000,
+        "y": 2240,
+        "wires": [
+            [
+                "a75c000000000052"
+            ],
+            [
+                "a75c000000000054"
+            ]
+        ]
     }
 ]
