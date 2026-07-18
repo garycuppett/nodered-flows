@@ -16263,7 +16263,7 @@
         "ifState": "on",
         "ifStateType": "str",
         "ifStateOperator": "is",
-        "outputOnlyOnStateChange": true,
+        "outputOnlyOnStateChange": false,
         "for": "0",
         "forType": "num",
         "forUnits": "minutes",
@@ -16296,15 +16296,15 @@
         "y": 2240,
         "wires": [
             [
-                "a75d000000000005"
+                "a75e000000000005"
             ],
             [
-                "a75d000000000006"
+                "a75e000000000005"
             ]
         ]
     },
     {
-        "id": "a75d000000000001",
+        "id": "a75e000000000001",
         "type": "mqtt out",
         "z": "e804bbde4f1485fb",
         "name": "",
@@ -16312,12 +16312,12 @@
         "qos": "0",
         "retain": "false",
         "broker": "955da5c8365fe376",
-        "x": 1900,
+        "x": 1960,
         "y": 2200,
         "wires": []
     },
     {
-        "id": "a75d000000000002",
+        "id": "a75e000000000002",
         "type": "mqtt out",
         "z": "e804bbde4f1485fb",
         "name": "",
@@ -16325,102 +16325,70 @@
         "qos": "0",
         "retain": "false",
         "broker": "955da5c8365fe376",
-        "x": 1900,
-        "y": 2260,
+        "x": 1960,
+        "y": 2280,
         "wires": []
     },
     {
-        "id": "a75d000000000003",
-        "type": "mqtt out",
+        "id": "a75e000000000003",
+        "type": "rbe",
         "z": "e804bbde4f1485fb",
         "name": "",
-        "topic": "zwave/Workshop_Scene_Switch/configuration/endpoint_0/LED_Indicator_Button_2/set",
-        "qos": "0",
-        "retain": "false",
-        "broker": "955da5c8365fe376",
-        "x": 1680,
-        "y": 2320,
-        "wires": []
-    },
-    {
-        "id": "a75d000000000004",
-        "type": "change",
-        "z": "e804bbde4f1485fb",
-        "name": "Fan LED On",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"value\": 3}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1620,
-        "y": 2260,
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1720,
+        "y": 2200,
         "wires": [
             [
-                "a75d000000000002"
+                "a75e000000000001"
             ]
         ]
     },
     {
-        "id": "a75d000000000005",
-        "type": "change",
+        "id": "a75e000000000004",
+        "type": "rbe",
         "z": "e804bbde4f1485fb",
-        "name": "Fan LED Green",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"value\": 2}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1340,
-        "y": 2220,
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1720,
+        "y": 2280,
         "wires": [
             [
-                "a75d000000000001",
-                "a75d000000000004"
+                "a75e000000000002"
             ]
         ]
     },
     {
-        "id": "a75d000000000006",
-        "type": "change",
+        "id": "a75e000000000005",
+        "type": "function",
         "z": "e804bbde4f1485fb",
-        "name": "Fan LED Off",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"value\": 2}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1340,
-        "y": 2320,
+        "name": "Fan Speed -> LED Color",
+        "func": "const state = msg.payload;\nconst ns = msg.data && msg.data.new_state;\nconst pct = ns && ns.attributes ? ns.attributes.percentage : null;\nif (state !== \"on\") {\n    // fan off (or unavailable): LED always-off; color irrelevant\n    return [null, { payload: { value: 2 } }];\n}\nlet color;\nif (pct === null || pct <= 25) color = 1;      // blue - low\nelse if (pct <= 50) color = 2;                 // green - medium\nelse if (pct <= 75) color = 5;                 // yellow - high\nelse color = 3;                                // red - max\nreturn [{ payload: { value: color } }, { payload: { value: 3 } }];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 2240,
         "wires": [
             [
-                "a75d000000000003"
+                "a75e000000000003"
+            ],
+            [
+                "a75e000000000004"
             ]
         ]
     }
