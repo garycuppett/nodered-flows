@@ -1156,169 +1156,6 @@
         ]
     },
     {
-        "id": "fda4d5dd09f52f78",
-        "type": "mqtt in",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "topic": "zwave/Denise_Closet/central_scene/endpoint_0/scene/002",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "955da5c8365fe376",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 250,
-        "y": 1220,
-        "wires": [
-            [
-                "c84b622dae038c24",
-                "5ffb85d2f06c8d80"
-            ]
-        ]
-    },
-    {
-        "id": "adb8cdcf24fee813",
-        "type": "mqtt in",
-        "z": "e804bbde4f1485fb",
-        "name": "",
-        "topic": "zwave/Denise_Closet/central_scene/endpoint_0/scene/001",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "955da5c8365fe376",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 250,
-        "y": 1120,
-        "wires": [
-            [
-                "b19b61ab752157bd",
-                "5ffb85d2f06c8d80"
-            ]
-        ]
-    },
-    {
-        "id": "b19b61ab752157bd",
-        "type": "switch",
-        "z": "e804bbde4f1485fb",
-        "name": "Paddle Up",
-        "property": "payload.value",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 570,
-        "y": 1120,
-        "wires": [
-            [],
-            [],
-            [
-                "04d63a09d96a7206"
-            ],
-            [
-                "33e932d1f9767f3b"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "c84b622dae038c24",
-        "type": "switch",
-        "z": "e804bbde4f1485fb",
-        "name": "Paddle Down",
-        "property": "payload.value",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "4",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 5,
-        "x": 570,
-        "y": 1220,
-        "wires": [
-            [],
-            [],
-            [
-                "c52b1c13801456e6"
-            ],
-            [
-                "2ef4e9bf21cc38d5"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "5ffb85d2f06c8d80",
-        "type": "debug",
-        "z": "e804bbde4f1485fb",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 1040,
-        "wires": []
-    },
-    {
         "id": "d3890311ce0b25c1",
         "type": "mqtt in",
         "z": "e804bbde4f1485fb",
@@ -1819,196 +1656,6 @@
         "wires": [
             [
                 "ac0000000000006"
-            ]
-        ]
-    },
-    {
-        "id": "79f266307e1fd619",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Always On",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "input_select.select_option",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "input_select.denise_motion_override"
-        ],
-        "labelId": [],
-        "data": "{\"option\":\"Always On\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "input_select",
-        "service": "select_option",
-        "x": 1050,
-        "y": 1100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3016ad90a6642ce5",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Always Off",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "input_select.select_option",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "input_select.denise_motion_override"
-        ],
-        "labelId": [],
-        "data": "{\"option\":\"Always Off\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "input_select",
-        "service": "select_option",
-        "x": 1050,
-        "y": 1200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "33e932d1f9767f3b",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Motion Sensor",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "input_select.select_option",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "input_select.denise_motion_override"
-        ],
-        "labelId": [],
-        "data": "{\"option\":\"Motion Sensor\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "input_select",
-        "service": "select_option",
-        "x": 780,
-        "y": 1140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2ef4e9bf21cc38d5",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Motion Sensor",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "input_select.select_option",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "input_select.denise_motion_override"
-        ],
-        "labelId": [],
-        "data": "{\"option\":\"Motion Sensor\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "input_select",
-        "service": "select_option",
-        "x": 780,
-        "y": 1240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "04d63a09d96a7206",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Cancel Denise Closet Timer",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "timer.cancel",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "timer.denise_closet"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "timer",
-        "service": "cancel",
-        "x": 820,
-        "y": 1100,
-        "wires": [
-            [
-                "79f266307e1fd619"
-            ]
-        ]
-    },
-    {
-        "id": "c52b1c13801456e6",
-        "type": "api-call-service",
-        "z": "e804bbde4f1485fb",
-        "name": "Cancel Denise Closet Timer",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "timer.cancel",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "timer.denise_closet"
-        ],
-        "labelId": [],
-        "data": "",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": false,
-        "domain": "timer",
-        "service": "cancel",
-        "x": 820,
-        "y": 1200,
-        "wires": [
-            [
-                "3016ad90a6642ce5"
             ]
         ]
     },
@@ -15250,5 +14897,51 @@
         "y": 0,
         "wires": [],
         "x_test_only": true
+    },
+    {
+        "id": "de015ec1ea100001",
+        "type": "server-state-changed",
+        "z": "9522de656232ba7a",
+        "name": "Denise Override Mode Changed",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "input_select.denise_motion_override"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": true,
+        "ignorePrevStateUnknown": true,
+        "ignorePrevStateUnavailable": true,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 150,
+        "y": 2060,
+        "wires": [
+            [
+                "c9406374b4687047"
+            ]
+        ]
     }
 ]
