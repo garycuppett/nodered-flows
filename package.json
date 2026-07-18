@@ -2,7 +2,11 @@
     "name": "nodered_flows",
     "description": "Home Assistant Nodered Flows",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-contrib-home-assistant-websocket": "0.80.3",
+        "node-red-contrib-time-range-switch": "1.2.0",
+        "node-red-node-suncalc": "1.2.0"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows.json",
