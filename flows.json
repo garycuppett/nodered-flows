@@ -19707,5 +19707,530 @@
                 "a761000000000054"
             ]
         ]
+    },
+    {
+        "id": "a763000000000001",
+        "type": "comment",
+        "z": "e804bbde4f1485fb",
+        "name": "Denise sleep status -> Office LED indicators",
+        "info": "Drives two always-on LED indicators from the bedroom/bathroom lights so Gary can tell from the office whether Denise is asleep:\n\n- GREEN: bedroom light or reading lamp on (awake)\n- ORANGE (yellow on the ZEN32 - it has no orange): bedroom lights off but bathroom-area lights on (winding down)\n- RED: all of the above off (asleep)\n\nTargets: Office_Sink Jasco switch LED (params 3/34) and Office_Scene_Switch ZEN32 button 3 / lower-left LED (params 4/9), both via Z2M configuration /set topics. The mode param is re-asserted to Always On (3) on every tier change.",
+        "x": 380,
+        "y": 6420,
+        "wires": []
+    },
+    {
+        "id": "a763000000000002",
+        "type": "server-state-changed",
+        "z": "e804bbde4f1485fb",
+        "name": "Denise Status Light Changed",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "light.bedroom_light_bedroom_light_switch",
+                "light.reading_lamp_2_reading_lamp_2_dimmer",
+                "light.shower_shower_dimmer",
+                "light.gary_sink_gary_sink_switch",
+                "light.denise_sink_2_denise_sink_2_switch",
+                "light.gary_closet_gary_closet_switch",
+                "light.denise_closet_denise_closet_switch_2"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 220,
+        "y": 6480,
+        "wires": [
+            [
+                "a763000000000010"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000010",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Get Bedroom Light",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.bedroom_light_bedroom_light_switch",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "bedroom",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "bedroom",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "x": 460,
+        "y": 6480,
+        "wires": [
+            [
+                "a763000000000011"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000011",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Get Reading Lamp",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.reading_lamp_2_reading_lamp_2_dimmer",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "reading",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "reading",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "x": 660,
+        "y": 6480,
+        "wires": [
+            [
+                "a763000000000012"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000012",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Get Shower",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.shower_shower_dimmer",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "shower",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "shower",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "x": 860,
+        "y": 6480,
+        "wires": [
+            [
+                "a763000000000013"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000013",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Get Gary Sink",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.gary_sink_gary_sink_switch",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "garySink",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "garySink",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "x": 1060,
+        "y": 6480,
+        "wires": [
+            [
+                "a763000000000014"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000014",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Get Denise Sink",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.denise_sink_2_denise_sink_2_switch",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "deniseSink",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "deniseSink",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "x": 460,
+        "y": 6540,
+        "wires": [
+            [
+                "a763000000000015"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000015",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Get Gary Closet",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.gary_closet_gary_closet_switch",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "garyCloset",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "garyCloset",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "x": 660,
+        "y": 6540,
+        "wires": [
+            [
+                "a763000000000016"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000016",
+        "type": "api-current-state",
+        "z": "e804bbde4f1485fb",
+        "name": "Get Denise Closet",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.denise_closet_denise_closet_switch_2",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "deniseCloset",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "deniseCloset",
+        "override_payload": "msg",
+        "entity_location": "",
+        "override_data": "none",
+        "x": 860,
+        "y": 6540,
+        "wires": [
+            [
+                "a763000000000020"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000020",
+        "type": "function",
+        "z": "e804bbde4f1485fb",
+        "name": "Denise Status -> LED Colors",
+        "func": "// Denise sleep status from the bedroom + master-bath lights.\n//   awake        = bedroom light or reading lamp on          -> green\n//   winding-down = only bathroom-area lights on              -> orange (ZEN32: yellow)\n//   asleep       = all of the above off                      -> red\nconst on = v => v === \"on\";\nconst awake = on(msg.bedroom) || on(msg.reading);\nconst winding = on(msg.shower) || on(msg.garySink) || on(msg.deniseSink)\n    || on(msg.garyCloset) || on(msg.deniseCloset);\n\n// [office ZEN32 button 3, office sink Jasco] color codes\n// ZEN32: 2=green 5=yellow 3=red (ZEN32 hardware has no orange)\n// Jasco: 4=green 2=orange 1=red\nlet zen32, sink;\nif (awake)        { zen32 = 2; sink = 4; }\nelse if (winding) { zen32 = 5; sink = 2; }\nelse              { zen32 = 3; sink = 1; }\nreturn [{ payload: { value: zen32 } }, { payload: { value: sink } }];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 6620,
+        "wires": [
+            [
+                "a763000000000021"
+            ],
+            [
+                "a763000000000022"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000021",
+        "type": "rbe",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": false,
+        "property": "payload",
+        "topi": "topic",
+        "x": 740,
+        "y": 6600,
+        "wires": [
+            [
+                "a763000000000030",
+                "a763000000000040"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000030",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Office_Scene_Switch/configuration/endpoint_0/LED_Indicator_Color_Button_3/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "955da5c8365fe376",
+        "x": 980,
+        "y": 6600,
+        "wires": []
+    },
+    {
+        "id": "a763000000000040",
+        "type": "change",
+        "z": "e804bbde4f1485fb",
+        "name": "LED Always On",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"value\":3}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 6660,
+        "wires": [
+            [
+                "a763000000000050"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000050",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Office_Scene_Switch/configuration/endpoint_0/LED_Indicator_Button_3/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "955da5c8365fe376",
+        "x": 1120,
+        "y": 6660,
+        "wires": []
+    },
+    {
+        "id": "a763000000000022",
+        "type": "rbe",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": false,
+        "property": "payload",
+        "topi": "topic",
+        "x": 740,
+        "y": 6660,
+        "wires": [
+            [
+                "a763000000000031",
+                "a763000000000041"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000031",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Office_Sink/configuration/endpoint_0/LED_Indicator_Color/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "955da5c8365fe376",
+        "x": 980,
+        "y": 6660,
+        "wires": []
+    },
+    {
+        "id": "a763000000000041",
+        "type": "change",
+        "z": "e804bbde4f1485fb",
+        "name": "LED Always On",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"value\":3}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 6780,
+        "wires": [
+            [
+                "a763000000000051"
+            ]
+        ]
+    },
+    {
+        "id": "a763000000000051",
+        "type": "mqtt out",
+        "z": "e804bbde4f1485fb",
+        "name": "",
+        "topic": "zwave/Office_Sink/configuration/endpoint_0/LED_Indicator/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "955da5c8365fe376",
+        "x": 1120,
+        "y": 6780,
+        "wires": []
     }
 ]
