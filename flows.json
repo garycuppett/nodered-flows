@@ -20232,5 +20232,103 @@
         "x": 1120,
         "y": 6780,
         "wires": []
+    },
+    {
+        "id": "a764000000000001",
+        "type": "comment",
+        "z": "695a25616d08159f",
+        "name": "Game light forced-off guard",
+        "info": "The Game switch (Z-Wave node 18) historically fell out of sync (physically on, HA=off) because its lifeline association was missing - fixed by re-interview 2026-07-18. This guard adds belt-and-braces: whenever ANY light.turn_off targets the Game light (Denise's remote, goodnight, dashboard, voice), wait 5 s, then publish a direct Z-Wave Binary Switch Set false via the Z2M value-write topic. It bypasses every state cache, an equal-value Set is harmless, and zwave-js's own verification Get re-syncs HA afterwards.",
+        "x": 300,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "a764000000000002",
+        "type": "server-events",
+        "z": "695a25616d08159f",
+        "name": "Any Service Call",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "exposeAsEntityConfig": "",
+        "eventType": "call_service",
+        "eventData": "",
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            }
+        ],
+        "x": 160,
+        "y": 780,
+        "wires": [
+            [
+                "a764000000000003"
+            ]
+        ]
+    },
+    {
+        "id": "a764000000000003",
+        "type": "function",
+        "z": "695a25616d08159f",
+        "name": "Targets Game Light Off?",
+        "func": "// Pass only light.turn_off calls that target the Game light (by entity or device id).\n// The Game switch (node 18) has a history of silently staying on: its state in HA\n// can go stale, and a burst off-command can be lost in RF congestion. Downstream,\n// a direct Z-Wave Set is published after a short delay - no state cache consulted.\nconst ev = msg.payload && msg.payload.event;\nif (!ev || ev.domain !== \"light\" || ev.service !== \"turn_off\") return null;\nconst blob = JSON.stringify(ev.service_data || {});\nif (!blob.includes(\"light.game_game_switch\") &&\n    !blob.includes(\"36d6cc4f40cbdfc275f6f63e445457e1\")) return null;\nreturn { payload: { value: false } };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 780,
+        "wires": [
+            [
+                "a764000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a764000000000004",
+        "type": "delay",
+        "z": "695a25616d08159f",
+        "name": "5 s",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 580,
+        "y": 780,
+        "wires": [
+            [
+                "a764000000000005"
+            ]
+        ]
+    },
+    {
+        "id": "a764000000000005",
+        "type": "mqtt out",
+        "z": "695a25616d08159f",
+        "name": "Force Game Light Off",
+        "topic": "zwave/Game/switch_binary/endpoint_0/targetValue/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "955da5c8365fe376",
+        "x": 780,
+        "y": 780,
+        "wires": []
     }
 ]
