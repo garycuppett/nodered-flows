@@ -21202,5 +21202,565 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "a767000000000009",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Downstairs setpoint band guard (cool >= heat + 2)",
+        "info": "",
+        "x": 220,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "a767000000000001",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Cool Setpoint Moved",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "input_number.downstairs_cool_temp"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 210,
+        "y": 4100,
+        "wires": [
+            [
+                "a767000000000002"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000002",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs heat setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.downstairs_heat_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "otherTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 470,
+        "y": 4100,
+        "wires": [
+            [
+                "a767000000000003"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000003",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Band Guard (cool moved)",
+        "func": "// The Downstairs cool helper just moved. Enforce cool >= heat + GAP by pushing\n// the heat helper down (last-touched wins). Clamp at the helper floor; the\n// mirror guard then raises cool instead, so the pair converges with the gap.\nconst GAP = 2.0;\nconst cool = Number(msg.payload);\nconst heat = Number(msg.otherTemp);\nif (!isFinite(cool) || !isFinite(heat)) return null;\nif (heat <= cool - GAP) return null;\nconst v = Math.max(60, cool - GAP);\nif (Math.abs(v - heat) < 0.25) return null;\nnode.status({ fill: \"green\", shape: \"dot\", text: \"heat -> \" + v });\nreturn { payload: { value: v } };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 4100,
+        "wires": [
+            [
+                "a767000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000004",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Push Downstairs Heat Down",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.downstairs_heat_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 980,
+        "y": 4100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a767000000000005",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Heat Setpoint Moved",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "input_number.downstairs_heat_temp"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 210,
+        "y": 4160,
+        "wires": [
+            [
+                "a767000000000006"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000006",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs cool setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.downstairs_cool_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "otherTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 470,
+        "y": 4160,
+        "wires": [
+            [
+                "a767000000000007"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000007",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Band Guard (heat moved)",
+        "func": "// The Downstairs heat helper just moved. Enforce cool >= heat + GAP by pushing\n// the cool helper up (last-touched wins).\nconst GAP = 2.0;\nconst heat = Number(msg.payload);\nconst cool = Number(msg.otherTemp);\nif (!isFinite(cool) || !isFinite(heat)) return null;\nif (cool >= heat + GAP) return null;\nconst v = Math.min(85, heat + GAP);\nif (Math.abs(v - cool) < 0.25) return null;\nnode.status({ fill: \"green\", shape: \"dot\", text: \"cool -> \" + v });\nreturn { payload: { value: v } };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 4160,
+        "wires": [
+            [
+                "a767000000000008"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000008",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Push Downstairs Cool Up",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.downstairs_cool_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 980,
+        "y": 4160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a767000000000029",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Upstairs setpoint band guard (cool >= heat + 2)",
+        "info": "",
+        "x": 220,
+        "y": 4260,
+        "wires": []
+    },
+    {
+        "id": "a767000000000021",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Cool Setpoint Moved",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "input_number.upstairs_cool_temp"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 210,
+        "y": 4300,
+        "wires": [
+            [
+                "a767000000000022"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000022",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs heat setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.upstairs_heat_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "otherTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 470,
+        "y": 4300,
+        "wires": [
+            [
+                "a767000000000023"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000023",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Band Guard (cool moved)",
+        "func": "// The Upstairs cool helper just moved. Enforce cool >= heat + GAP by pushing\n// the heat helper down (last-touched wins). Clamp at the helper floor; the\n// mirror guard then raises cool instead, so the pair converges with the gap.\nconst GAP = 2.0;\nconst cool = Number(msg.payload);\nconst heat = Number(msg.otherTemp);\nif (!isFinite(cool) || !isFinite(heat)) return null;\nif (heat <= cool - GAP) return null;\nconst v = Math.max(60, cool - GAP);\nif (Math.abs(v - heat) < 0.25) return null;\nnode.status({ fill: \"green\", shape: \"dot\", text: \"heat -> \" + v });\nreturn { payload: { value: v } };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 4300,
+        "wires": [
+            [
+                "a767000000000024"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000024",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Push Upstairs Heat Down",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.upstairs_heat_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 980,
+        "y": 4300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a767000000000025",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Heat Setpoint Moved",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "input_number.upstairs_heat_temp"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 210,
+        "y": 4360,
+        "wires": [
+            [
+                "a767000000000026"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000026",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs cool setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.upstairs_cool_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "otherTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 470,
+        "y": 4360,
+        "wires": [
+            [
+                "a767000000000027"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000027",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Band Guard (heat moved)",
+        "func": "// The Upstairs heat helper just moved. Enforce cool >= heat + GAP by pushing\n// the cool helper up (last-touched wins).\nconst GAP = 2.0;\nconst heat = Number(msg.payload);\nconst cool = Number(msg.otherTemp);\nif (!isFinite(cool) || !isFinite(heat)) return null;\nif (cool >= heat + GAP) return null;\nconst v = Math.min(85, heat + GAP);\nif (Math.abs(v - cool) < 0.25) return null;\nnode.status({ fill: \"green\", shape: \"dot\", text: \"cool -> \" + v });\nreturn { payload: { value: v } };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 4360,
+        "wires": [
+            [
+                "a767000000000028"
+            ]
+        ]
+    },
+    {
+        "id": "a767000000000028",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Push Upstairs Cool Up",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.upstairs_cool_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 980,
+        "y": 4360,
+        "wires": [
+            []
+        ]
     }
 ]
