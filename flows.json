@@ -12390,7 +12390,10 @@
             [
                 "2a3f6f1662422dff"
             ],
-            [],
+            [
+                "2a3f6f1662422dff",
+                "7371ec49193bd853"
+            ],
             [
                 "7371ec49193bd853"
             ]
@@ -12459,7 +12462,10 @@
             [
                 "d85e446471db9c5a"
             ],
-            [],
+            [
+                "d85e446471db9c5a",
+                "bef64540b95245f1"
+            ],
             [
                 "bef64540b95245f1"
             ]
@@ -12498,7 +12504,10 @@
             [
                 "ce89162caad97048"
             ],
-            [],
+            [
+                "ce89162caad97048",
+                "9653b2bf44a5a2f8"
+            ],
             [
                 "9653b2bf44a5a2f8"
             ]
@@ -12519,7 +12528,7 @@
             },
             {
                 "t": "eq",
-                "v": "Cool / Heat",
+                "v": "Auto",
                 "vt": "str"
             },
             {
@@ -12537,7 +12546,10 @@
             [
                 "2dc7848f780d0314"
             ],
-            [],
+            [
+                "2dc7848f780d0314",
+                "d7f870504380c6c2"
+            ],
             [
                 "d7f870504380c6c2"
             ]
@@ -12548,7 +12560,7 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Upstairs Cool / Auto / Heat",
-        "property": "downstairs_climate_mode",
+        "property": "upstairs_climate_mode",
         "propertyType": "global",
         "rules": [
             {
@@ -12558,7 +12570,7 @@
             },
             {
                 "t": "eq",
-                "v": "Cool / Heat",
+                "v": "Auto",
                 "vt": "str"
             },
             {
@@ -12576,7 +12588,10 @@
             [
                 "b5a57825bc248a6e"
             ],
-            [],
+            [
+                "b5a57825bc248a6e",
+                "cd433e8d88e579f4"
+            ],
             [
                 "cd433e8d88e579f4"
             ]
@@ -12587,7 +12602,7 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Upstairs Cool / Auto / Heat",
-        "property": "downstairs_climate_mode",
+        "property": "upstairs_climate_mode",
         "propertyType": "global",
         "rules": [
             {
@@ -12597,7 +12612,7 @@
             },
             {
                 "t": "eq",
-                "v": "Cool / Heat",
+                "v": "Auto",
                 "vt": "str"
             },
             {
@@ -12615,7 +12630,10 @@
             [
                 "8c6245bc5550b168"
             ],
-            [],
+            [
+                "8c6245bc5550b168",
+                "4da2bac344f1bd15"
+            ],
             [
                 "4da2bac344f1bd15"
             ]
