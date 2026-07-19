@@ -10373,6 +10373,13 @@
                 "to": "payload",
                 "tot": "msg",
                 "dc": true
+            },
+            {
+                "t": "set",
+                "p": "downstairs_setpoint_touched",
+                "pt": "global",
+                "to": "$millis()",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -10399,6 +10406,13 @@
                 "to": "payload",
                 "tot": "msg",
                 "dc": true
+            },
+            {
+                "t": "set",
+                "p": "downstairs_setpoint_touched",
+                "pt": "global",
+                "to": "$millis()",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -10544,6 +10558,13 @@
                 "to": "payload",
                 "tot": "msg",
                 "dc": true
+            },
+            {
+                "t": "set",
+                "p": "upstairs_setpoint_touched",
+                "pt": "global",
+                "to": "$millis()",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -10570,6 +10591,13 @@
                 "to": "payload",
                 "tot": "msg",
                 "dc": true
+            },
+            {
+                "t": "set",
+                "p": "upstairs_setpoint_touched",
+                "pt": "global",
+                "to": "$millis()",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -20627,6 +20655,552 @@
             [
                 "57fb76e182175762"
             ]
+        ]
+    },
+    {
+        "id": "a766000000000009",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Downstairs wall-setpoint adoption (hardware -> helper)",
+        "info": "",
+        "x": 230,
+        "y": 3560,
+        "wires": []
+    },
+    {
+        "id": "a766000000000001",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Thermostat Updated",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [],
+        "x": 200,
+        "y": 3600,
+        "wires": [
+            [
+                "a766000000000002"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000002",
+        "type": "delay",
+        "z": "368e45adda3836be",
+        "name": "settle 20s",
+        "pauseType": "delay",
+        "timeout": "20",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 420,
+        "y": 3600,
+        "wires": [
+            [
+                "a766000000000003"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000003",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs climate",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "climate.downstairs_honeywell_downstairs_honeywell_climate_2",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "climateEntity",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 620,
+        "y": 3600,
+        "wires": [
+            [
+                "a766000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000004",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs cool setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.downstairs_cool_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "coolTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 850,
+        "y": 3600,
+        "wires": [
+            [
+                "a766000000000005"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000005",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs heat setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.downstairs_heat_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "heatTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 1080,
+        "y": 3600,
+        "wires": [
+            [
+                "a766000000000006"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000006",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Wall Setpoint Adopter",
+        "func": "// Adopt a wall-unit setpoint change into the Downstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <15s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\nconst touched = global.get(\"downstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 15000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 3600,
+        "wires": [
+            [
+                "a766000000000007"
+            ],
+            [
+                "a766000000000008"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000007",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Adopt Downstairs Cool Setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.downstairs_cool_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 1560,
+        "y": 3580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a766000000000008",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Adopt Downstairs Heat Setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.downstairs_heat_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 1560,
+        "y": 3620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a766000000000029",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Upstairs wall-setpoint adoption (hardware -> helper)",
+        "info": "",
+        "x": 230,
+        "y": 3760,
+        "wires": []
+    },
+    {
+        "id": "a766000000000021",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Thermostat Updated",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "climate.upstairs_honeywell_upstairs_honeywell_climate"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [],
+        "x": 200,
+        "y": 3800,
+        "wires": [
+            [
+                "a766000000000022"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000022",
+        "type": "delay",
+        "z": "368e45adda3836be",
+        "name": "settle 20s",
+        "pauseType": "delay",
+        "timeout": "20",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 420,
+        "y": 3800,
+        "wires": [
+            [
+                "a766000000000023"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000023",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs climate",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "climate.upstairs_honeywell_upstairs_honeywell_climate",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "climateEntity",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 620,
+        "y": 3800,
+        "wires": [
+            [
+                "a766000000000024"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000024",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs cool setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.upstairs_cool_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "coolTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 850,
+        "y": 3800,
+        "wires": [
+            [
+                "a766000000000025"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000025",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs heat setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.upstairs_heat_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "heatTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 1080,
+        "y": 3800,
+        "wires": [
+            [
+                "a766000000000026"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000026",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Wall Setpoint Adopter",
+        "func": "// Adopt a wall-unit setpoint change into the Upstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <15s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\nconst touched = global.get(\"upstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 15000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 3800,
+        "wires": [
+            [
+                "a766000000000027"
+            ],
+            [
+                "a766000000000028"
+            ]
+        ]
+    },
+    {
+        "id": "a766000000000027",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Adopt Upstairs Cool Setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.upstairs_cool_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 1560,
+        "y": 3780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a766000000000028",
+        "type": "api-call-service",
+        "z": "368e45adda3836be",
+        "name": "Adopt Upstairs Heat Setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "input_number.set_value",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_number.upstairs_heat_temp"
+        ],
+        "labelId": [],
+        "data": "{\"value\": payload.value}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": true,
+        "domain": "input_number",
+        "service": "set_value",
+        "x": 1560,
+        "y": 3820,
+        "wires": [
+            []
         ]
     }
 ]
