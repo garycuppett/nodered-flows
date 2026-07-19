@@ -10250,7 +10250,7 @@
                 "d64f22296d28deed"
             ],
             [
-                "75055c16cfa4e5a0"
+                "a765000000000001"
             ],
             [
                 "1570b82642266354"
@@ -10463,31 +10463,6 @@
         ]
     },
     {
-        "id": "de12721b092906c2",
-        "type": "delay",
-        "z": "368e45adda3836be",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 800,
-        "y": 1700,
-        "wires": [
-            [
-                "9395f3925dbce5f9"
-            ]
-        ]
-    },
-    {
         "id": "becfbed4a1e9dbcc",
         "type": "change",
         "z": "368e45adda3836be",
@@ -10633,7 +10608,7 @@
             },
             {
                 "t": "eq",
-                "v": "Cool / Heat",
+                "v": "Auto",
                 "vt": "str"
             },
             {
@@ -10652,7 +10627,7 @@
                 "496b383e3023fec9"
             ],
             [
-                "21fa1a706dd2a57b"
+                "a765000000000021"
             ],
             [
                 "330e187de1186549"
@@ -10809,31 +10784,6 @@
         "wires": [
             [
                 "356c8b26cfdd0b28"
-            ]
-        ]
-    },
-    {
-        "id": "4961d4de68239e3e",
-        "type": "delay",
-        "z": "368e45adda3836be",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 800,
-        "y": 2060,
-        "wires": [
-            [
-                "ef857009dfa7e4d8"
             ]
         ]
     },
@@ -11004,40 +10954,6 @@
         ]
     },
     {
-        "id": "75055c16cfa4e5a0",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Downstairs to Cool / Heat",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_hvac_mode",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
-        ],
-        "labelId": [],
-        "data": "{\"hvac_mode\": \"auto\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_hvac_mode",
-        "x": 550,
-        "y": 1640,
-        "wires": [
-            [
-                "43d84d53ab79813e",
-                "de12721b092906c2"
-            ]
-        ]
-    },
-    {
         "id": "e220fc8b75c6798e",
         "type": "api-call-service",
         "z": "368e45adda3836be",
@@ -11157,99 +11073,6 @@
         "service": "set_temperature",
         "x": 990,
         "y": 1800,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fa5be19c995d09ed",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Downstairs Temp Range",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_temperature",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
-        ],
-        "labelId": [],
-        "data": "{    \"max_temp\":{{global.downstairs_climate_cool_temp}},    \"min_temp\":{{global.downstairs_climate_cool_temp}}}",
-        "dataType": "json",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_temperature",
-        "x": 1200,
-        "y": 2420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c2eef205311b5134",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Downstairs Temp Range",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_temperature",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
-        ],
-        "labelId": [],
-        "data": "{    \"max_temp\":{{global.downstairs_climate_cool_temp}},    \"min_temp\":{{global.downstairs_climate_cool_temp}}}",
-        "dataType": "json",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_temperature",
-        "x": 1200,
-        "y": 2620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9395f3925dbce5f9",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Downstairs Temp Range",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_temperature",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
-        ],
-        "labelId": [],
-        "data": "{    \"max_temp\":{{global.downstairs_climate_cool_temp}},    \"min_temp\":{{global.downstairs_climate_cool_temp}}}",
-        "dataType": "json",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_temperature",
-        "x": 1040,
-        "y": 1700,
         "wires": [
             []
         ]
@@ -11379,68 +11202,6 @@
         ]
     },
     {
-        "id": "1b58e7af151fa573",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Upstairs Temp Range",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_temperature",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.upstairs_honeywell_upstairs_honeywell_climate"
-        ],
-        "labelId": [],
-        "data": "{    \"max_temp\":{{global.upstairs_climate_cool_temp}},    \"min_temp\":{{global.upstairs_climate_cool_temp}}}",
-        "dataType": "json",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_temperature",
-        "x": 1190,
-        "y": 2860,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cbc2e33cd813106f",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Upstairs Temp Range",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_temperature",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.upstairs_honeywell_upstairs_honeywell_climate"
-        ],
-        "labelId": [],
-        "data": "{    \"max_temp\":{{global.upstairs_climate_cool_temp}},    \"min_temp\":{{global.upstairs_climate_cool_temp}}}",
-        "dataType": "json",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_temperature",
-        "x": 1190,
-        "y": 3060,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "496b383e3023fec9",
         "type": "api-call-service",
         "z": "368e45adda3836be",
@@ -11509,40 +11270,6 @@
         ]
     },
     {
-        "id": "21fa1a706dd2a57b",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Upstairs to Cool / Heat",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_hvac_mode",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.upstairs_honeywell_upstairs_honeywell_climate"
-        ],
-        "labelId": [],
-        "data": "{\"hvac_mode\": \"auto\"}",
-        "dataType": "jsonata",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_hvac_mode",
-        "x": 540,
-        "y": 2000,
-        "wires": [
-            [
-                "ecc671f31b1af9ec",
-                "4961d4de68239e3e"
-            ]
-        ]
-    },
-    {
         "id": "08b58dfa81ed71e1",
         "type": "api-call-service",
         "z": "368e45adda3836be",
@@ -11600,37 +11327,6 @@
         "service": "set_temperature",
         "x": 990,
         "y": 2160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ef857009dfa7e4d8",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Upstairs Temp Range",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_temperature",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.upstairs_honeywell_upstairs_honeywell_climate"
-        ],
-        "labelId": [],
-        "data": "{    \"max_temp\":{{global.upstairs_climate_cool_temp}},    \"min_temp\":{{global.upstairs_climate_cool_temp}}}",
-        "dataType": "json",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_temperature",
-        "x": 1030,
-        "y": 2060,
         "wires": [
             []
         ]
@@ -11764,7 +11460,7 @@
         "server": "fc3c38fd.04c728",
         "version": 3,
         "outputs": 2,
-        "halt_if": "Auto",
+        "halt_if": "Cool / Heat",
         "halt_if_type": "str",
         "halt_if_compare": "is",
         "entity_id": "input_select.downstairs_mode",
@@ -11796,7 +11492,7 @@
         "y": 2420,
         "wires": [
             [
-                "fa5be19c995d09ed"
+                "a765000000000002"
             ],
             []
         ]
@@ -11809,7 +11505,7 @@
         "server": "fc3c38fd.04c728",
         "version": 3,
         "outputs": 2,
-        "halt_if": "Auto",
+        "halt_if": "Cool / Heat",
         "halt_if_type": "str",
         "halt_if_compare": "is",
         "entity_id": "input_select.downstairs_mode",
@@ -11841,7 +11537,7 @@
         "y": 2620,
         "wires": [
             [
-                "c2eef205311b5134"
+                "a765000000000002"
             ],
             []
         ]
@@ -12072,7 +11768,7 @@
         "y": 2860,
         "wires": [
             [
-                "1b58e7af151fa573"
+                "a765000000000022"
             ],
             []
         ]
@@ -12117,7 +11813,7 @@
         "y": 3060,
         "wires": [
             [
-                "cbc2e33cd813106f"
+                "a765000000000022"
             ],
             []
         ]
@@ -20330,5 +20026,589 @@
         "x": 780,
         "y": 780,
         "wires": []
+    },
+    {
+        "id": "a765000000000009",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Downstairs auto arbiter — hardware never sees \"auto\"",
+        "info": "",
+        "x": 200,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "a765000000000001",
+        "type": "change",
+        "z": "368e45adda3836be",
+        "name": "reason: modeEntry",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reason",
+                "pt": "msg",
+                "to": "modeEntry",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 1380,
+        "wires": [
+            [
+                "a765000000000005"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000002",
+        "type": "change",
+        "z": "368e45adda3836be",
+        "name": "reason: setpoint",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reason",
+                "pt": "msg",
+                "to": "setpoint",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 1420,
+        "wires": [
+            [
+                "a765000000000005"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000003",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Climate Updated",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "reason",
+                "propertyType": "msg",
+                "value": "temp",
+                "valueType": "str"
+            }
+        ],
+        "x": 190,
+        "y": 1460,
+        "wires": [
+            [
+                "a765000000000004"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000004",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "Downstairs in auto?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "Cool / Heat",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.downstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "autoMode",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 420,
+        "y": 1460,
+        "wires": [
+            [
+                "a765000000000005"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a765000000000005",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs climate",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "climate.downstairs_honeywell_downstairs_honeywell_climate_2",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "climateEntity",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 650,
+        "y": 1420,
+        "wires": [
+            [
+                "a765000000000006"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000006",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs cool setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.downstairs_cool_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "coolTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 880,
+        "y": 1420,
+        "wires": [
+            [
+                "a765000000000007"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000007",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Downstairs heat setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.downstairs_heat_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "heatTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 1110,
+        "y": 1420,
+        "wires": [
+            [
+                "a765000000000008"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000008",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Auto Arbiter",
+        "func": "// Auto (Cool/Heat) arbiter for the Downstairs zone. While the mode helper is\n// in its auto option, the hardware is only ever commanded to cool or heat --\n// its native \"auto\" mode is broken and never used. Switching sides requires\n// the room temp to cross the FAR setpoint by BUFFER, and automatic switches\n// are rate-limited by DWELL_MS. Re-selecting auto on the dashboard resets\n// the dwell and re-commands a side explicitly.\nconst BUFFER = 1.0;               // degrees F past the far setpoint\nconst DWELL_MS = 30 * 60 * 1000;  // min gap between automatic side switches\nconst KEY = \"a765_last_switch_downstairs\";\n\nconst ent = msg.climateEntity || {};\nconst attrs = ent.attributes || {};\nconst temp = Number(attrs.current_temperature);\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif (!isFinite(temp) || !isFinite(cool) || !isFinite(heat)) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"missing temp/setpoints\" });\n    return null;\n}\n\nlet side = ent.state === \"cool\" ? \"cool\" : ent.state === \"heat\" ? \"heat\" : null;\nif (msg.reason === \"modeEntry\") {\n    side = null;       // always command a side explicitly on entry\n    flow.set(KEY, 0);  // user touched the mode: reset the dwell guard\n}\n\nlet want = null;\nif (side === \"cool\") {\n    if (temp <= heat - BUFFER) want = \"heat\";\n} else if (side === \"heat\") {\n    if (temp >= cool + BUFFER) want = \"cool\";\n} else {\n    want = temp >= (cool + heat) / 2 ? \"cool\" : \"heat\";\n}\n\nif (want !== null) {\n    if (side !== null) {  // dwell guard applies to real side switches only\n        const now = Date.now();\n        const last = flow.get(KEY) || 0;\n        if (now - last < DWELL_MS) {\n            node.status({ fill: \"yellow\", shape: \"ring\", text: \"dwell: holding \" + side });\n            return null;\n        }\n        flow.set(KEY, now);\n    }\n    node.status({ fill: \"green\", shape: \"dot\", text: want + \" @ \" + temp });\n    return want === \"cool\" ? [msg, null, null, null] : [null, msg, null, null];\n}\n\nif (msg.reason === \"setpoint\" && side !== null) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"push \" + side + \" setpoint\" });\n    return side === \"cool\" ? [null, null, msg, null] : [null, null, null, msg];\n}\nreturn null;\n",
+        "outputs": 4,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1340,
+        "y": 1420,
+        "wires": [
+            [
+                "d64f22296d28deed"
+            ],
+            [
+                "1570b82642266354"
+            ],
+            [
+                "e220fc8b75c6798e"
+            ],
+            [
+                "a6b134969ff4b2a0"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000029",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Upstairs auto arbiter — hardware never sees \"auto\"",
+        "info": "",
+        "x": 200,
+        "y": 2160,
+        "wires": []
+    },
+    {
+        "id": "a765000000000021",
+        "type": "change",
+        "z": "368e45adda3836be",
+        "name": "reason: modeEntry",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reason",
+                "pt": "msg",
+                "to": "modeEntry",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 2200,
+        "wires": [
+            [
+                "a765000000000025"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000022",
+        "type": "change",
+        "z": "368e45adda3836be",
+        "name": "reason: setpoint",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reason",
+                "pt": "msg",
+                "to": "setpoint",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 2240,
+        "wires": [
+            [
+                "a765000000000025"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000023",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Climate Updated",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "climate.upstairs_honeywell_upstairs_honeywell_climate"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "reason",
+                "propertyType": "msg",
+                "value": "temp",
+                "valueType": "str"
+            }
+        ],
+        "x": 190,
+        "y": 2280,
+        "wires": [
+            [
+                "a765000000000024"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000024",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "Upstairs in auto?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "Auto",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.upstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "autoMode",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 420,
+        "y": 2280,
+        "wires": [
+            [
+                "a765000000000025"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a765000000000025",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs climate",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "climate.upstairs_honeywell_upstairs_honeywell_climate",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "climateEntity",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 650,
+        "y": 2240,
+        "wires": [
+            [
+                "a765000000000026"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000026",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs cool setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.upstairs_cool_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "coolTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 880,
+        "y": 2240,
+        "wires": [
+            [
+                "a765000000000027"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000027",
+        "type": "api-current-state",
+        "z": "368e45adda3836be",
+        "name": "read Upstairs heat setpoint",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_number.upstairs_heat_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "heatTemp",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 1110,
+        "y": 2240,
+        "wires": [
+            [
+                "a765000000000028"
+            ]
+        ]
+    },
+    {
+        "id": "a765000000000028",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Auto Arbiter",
+        "func": "// Auto (Cool/Heat) arbiter for the Upstairs zone. While the mode helper is\n// in its auto option, the hardware is only ever commanded to cool or heat --\n// its native \"auto\" mode is broken and never used. Switching sides requires\n// the room temp to cross the FAR setpoint by BUFFER, and automatic switches\n// are rate-limited by DWELL_MS. Re-selecting auto on the dashboard resets\n// the dwell and re-commands a side explicitly.\nconst BUFFER = 1.0;               // degrees F past the far setpoint\nconst DWELL_MS = 30 * 60 * 1000;  // min gap between automatic side switches\nconst KEY = \"a765_last_switch_upstairs\";\n\nconst ent = msg.climateEntity || {};\nconst attrs = ent.attributes || {};\nconst temp = Number(attrs.current_temperature);\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif (!isFinite(temp) || !isFinite(cool) || !isFinite(heat)) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"missing temp/setpoints\" });\n    return null;\n}\n\nlet side = ent.state === \"cool\" ? \"cool\" : ent.state === \"heat\" ? \"heat\" : null;\nif (msg.reason === \"modeEntry\") {\n    side = null;       // always command a side explicitly on entry\n    flow.set(KEY, 0);  // user touched the mode: reset the dwell guard\n}\n\nlet want = null;\nif (side === \"cool\") {\n    if (temp <= heat - BUFFER) want = \"heat\";\n} else if (side === \"heat\") {\n    if (temp >= cool + BUFFER) want = \"cool\";\n} else {\n    want = temp >= (cool + heat) / 2 ? \"cool\" : \"heat\";\n}\n\nif (want !== null) {\n    if (side !== null) {  // dwell guard applies to real side switches only\n        const now = Date.now();\n        const last = flow.get(KEY) || 0;\n        if (now - last < DWELL_MS) {\n            node.status({ fill: \"yellow\", shape: \"ring\", text: \"dwell: holding \" + side });\n            return null;\n        }\n        flow.set(KEY, now);\n    }\n    node.status({ fill: \"green\", shape: \"dot\", text: want + \" @ \" + temp });\n    return want === \"cool\" ? [msg, null, null, null] : [null, msg, null, null];\n}\n\nif (msg.reason === \"setpoint\" && side !== null) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"push \" + side + \" setpoint\" });\n    return side === \"cool\" ? [null, null, msg, null] : [null, null, null, msg];\n}\nreturn null;\n",
+        "outputs": 4,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1340,
+        "y": 2240,
+        "wires": [
+            [
+                "496b383e3023fec9"
+            ],
+            [
+                "330e187de1186549"
+            ],
+            [
+                "2f98833a14b03bab"
+            ],
+            [
+                "57fb76e182175762"
+            ]
+        ]
     }
 ]
