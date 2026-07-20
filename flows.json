@@ -9615,7 +9615,8 @@
         "wires": [
             [
                 "f2ebdcdf8c8d4012",
-                "e5e07fbd8c23d716"
+                "e5e07fbd8c23d716",
+                "a768000000000001"
             ]
         ]
     },
@@ -9994,7 +9995,8 @@
         "wires": [
             [
                 "39623a6c32a9872e",
-                "d5026ef08a653d3b"
+                "d5026ef08a653d3b",
+                "a768000000000021"
             ]
         ]
     },
@@ -21762,5 +21764,91 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "a768000000000009",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Temp-bounds self-heal — bad discovery config is corrected on arrival (retained)",
+        "info": "",
+        "x": 320,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a768000000000001",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Bounds Self-Heal",
+        "func": "// Self-heal the Downstairs climate temp bounds. Z2M restarts republish this\n// discovery config (retained) with min 5 / max 40; HA then rejects every\n// Fahrenheit setpoint write. Re-assert 50/90 immediately, retained, so the\n// corrected config is also what the broker keeps. The republish re-arrives\n// here with correct bounds and no-ops (loop guard).\nlet cfg = msg.payload;\nif (typeof cfg === \"string\") {\n    try { cfg = JSON.parse(cfg); } catch (e) { return null; }\n}\nif (!cfg || typeof cfg !== \"object\" || Array.isArray(cfg)) return null;\nif (cfg.min_temp === 50 && cfg.max_temp === 90) return null;\ncfg.min_temp = 50;\ncfg.max_temp = 90;\nnode.status({ fill: \"green\", shape: \"dot\", text: \"re-asserted 50-90\" });\nreturn { payload: cfg };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 330,
+        "wires": [
+            [
+                "a768000000000002"
+            ]
+        ]
+    },
+    {
+        "id": "a768000000000002",
+        "type": "mqtt out",
+        "z": "368e45adda3836be",
+        "name": "Downstairs config (retained)",
+        "topic": "homeassistant/climate/Downstairs_Honeywell/climate/config",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "955da5c8365fe376",
+        "x": 650,
+        "y": 330,
+        "wires": []
+    },
+    {
+        "id": "a768000000000021",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Upstairs Bounds Self-Heal",
+        "func": "// Self-heal the Upstairs climate temp bounds. Z2M restarts republish this\n// discovery config (retained) with min 5 / max 40; HA then rejects every\n// Fahrenheit setpoint write. Re-assert 50/90 immediately, retained, so the\n// corrected config is also what the broker keeps. The republish re-arrives\n// here with correct bounds and no-ops (loop guard).\nlet cfg = msg.payload;\nif (typeof cfg === \"string\") {\n    try { cfg = JSON.parse(cfg); } catch (e) { return null; }\n}\nif (!cfg || typeof cfg !== \"object\" || Array.isArray(cfg)) return null;\nif (cfg.min_temp === 50 && cfg.max_temp === 90) return null;\ncfg.min_temp = 50;\ncfg.max_temp = 90;\nnode.status({ fill: \"green\", shape: \"dot\", text: \"re-asserted 50-90\" });\nreturn { payload: cfg };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 510,
+        "wires": [
+            [
+                "a768000000000022"
+            ]
+        ]
+    },
+    {
+        "id": "a768000000000022",
+        "type": "mqtt out",
+        "z": "368e45adda3836be",
+        "name": "Upstairs config (retained)",
+        "topic": "homeassistant/climate/Upstairs_Honeywell/climate/config",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "955da5c8365fe376",
+        "x": 650,
+        "y": 510,
+        "wires": []
     }
 ]
