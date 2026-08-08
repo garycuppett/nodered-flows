@@ -11583,7 +11583,7 @@
             "substring": [],
             "regex": []
         },
-        "outputInitially": false,
+        "outputInitially": true,
         "stateType": "str",
         "ifState": "",
         "ifStateType": "str",
@@ -11642,7 +11642,7 @@
             "substring": [],
             "regex": []
         },
-        "outputInitially": false,
+        "outputInitially": true,
         "stateType": "str",
         "ifState": "",
         "ifStateType": "str",
@@ -11701,7 +11701,7 @@
             "substring": [],
             "regex": []
         },
-        "outputInitially": false,
+        "outputInitially": true,
         "stateType": "str",
         "ifState": "",
         "ifStateType": "str",
@@ -11818,7 +11818,7 @@
             "substring": [],
             "regex": []
         },
-        "outputInitially": false,
+        "outputInitially": true,
         "stateType": "str",
         "ifState": "",
         "ifStateType": "str",
@@ -11877,7 +11877,7 @@
             "substring": [],
             "regex": []
         },
-        "outputInitially": false,
+        "outputInitially": true,
         "stateType": "str",
         "ifState": "",
         "ifStateType": "str",
@@ -11936,7 +11936,7 @@
             "substring": [],
             "regex": []
         },
-        "outputInitially": false,
+        "outputInitially": true,
         "stateType": "str",
         "ifState": "",
         "ifStateType": "str",
@@ -12004,8 +12004,8 @@
         "y": 200,
         "wires": [
             [
-                "95fa174642fb858b",
-                "035c33b9716f3370"
+                "a76b000000000001",
+                "a76b000000000002"
             ]
         ]
     },
@@ -12034,8 +12034,8 @@
         "y": 660,
         "wires": [
             [
-                "b7b0b2a783c4ccbf",
-                "b06e959d5d6cbd70"
+                "a76b000000000005",
+                "a76b000000000006"
             ]
         ]
     },
@@ -12044,8 +12044,8 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Downstairs Cool / Auto / Heat",
-        "property": "downstairs_climate_mode",
-        "propertyType": "global",
+        "property": "payload",
+        "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
@@ -12106,8 +12106,8 @@
         "y": 400,
         "wires": [
             [
-                "cda55edb7d3ebf24",
-                "cb392c7a40080781"
+                "a76b000000000003",
+                "a76b000000000004"
             ]
         ]
     },
@@ -12116,8 +12116,8 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Downstairs Cool / Auto / Heat",
-        "property": "downstairs_climate_mode",
-        "propertyType": "global",
+        "property": "payload",
+        "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
@@ -12158,8 +12158,8 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Downstairs Cool / Auto / Heat",
-        "property": "downstairs_climate_mode",
-        "propertyType": "global",
+        "property": "payload",
+        "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
@@ -12200,8 +12200,8 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Upstairs Cool / Auto / Heat",
-        "property": "upstairs_climate_mode",
-        "propertyType": "global",
+        "property": "payload",
+        "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
@@ -12242,8 +12242,8 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Upstairs Cool / Auto / Heat",
-        "property": "upstairs_climate_mode",
-        "propertyType": "global",
+        "property": "payload",
+        "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
@@ -12284,8 +12284,8 @@
         "type": "switch",
         "z": "78d68859e621034c",
         "name": "Upstairs Cool / Auto / Heat",
-        "property": "upstairs_climate_mode",
-        "propertyType": "global",
+        "property": "payload",
+        "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
@@ -21952,7 +21952,7 @@
         "type": "function",
         "z": "368e45adda3836be",
         "name": "Downstairs Wall Setpoint Adopter",
-        "func": "// Adopt a wall-unit setpoint change into the Downstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <15s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\nconst touched = global.get(\"downstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 15000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
+        "func": "// Adopt a wall-unit setpoint change into the Downstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <40s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\nconst touched = global.get(\"downstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 40000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -22225,7 +22225,7 @@
         "type": "function",
         "z": "368e45adda3836be",
         "name": "Upstairs Wall Setpoint Adopter",
-        "func": "// Adopt a wall-unit setpoint change into the Upstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <15s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\nconst touched = global.get(\"upstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 15000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
+        "func": "// Adopt a wall-unit setpoint change into the Upstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <40s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\nconst touched = global.get(\"upstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 40000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -22989,7 +22989,8 @@
         "wires": [
             [
                 "a76903f5d0e01003",
-                "a76904f5d0e01004"
+                "a76904f5d0e01004",
+                "a76b000000000007"
             ]
         ]
     },
@@ -23140,5 +23141,275 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "a76b000000000001",
+        "type": "api-current-state",
+        "z": "78d68859e621034c",
+        "name": "Read Downstairs Mode (live)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.downstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 280,
+        "y": 200,
+        "wires": [
+            [
+                "95fa174642fb858b"
+            ]
+        ]
+    },
+    {
+        "id": "a76b000000000002",
+        "type": "api-current-state",
+        "z": "78d68859e621034c",
+        "name": "Read Upstairs Mode (live)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.upstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 280,
+        "y": 260,
+        "wires": [
+            [
+                "035c33b9716f3370"
+            ]
+        ]
+    },
+    {
+        "id": "a76b000000000003",
+        "type": "api-current-state",
+        "z": "78d68859e621034c",
+        "name": "Read Downstairs Mode (live)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.downstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 280,
+        "y": 400,
+        "wires": [
+            [
+                "cda55edb7d3ebf24"
+            ]
+        ]
+    },
+    {
+        "id": "a76b000000000004",
+        "type": "api-current-state",
+        "z": "78d68859e621034c",
+        "name": "Read Upstairs Mode (live)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.upstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "cb392c7a40080781"
+            ]
+        ]
+    },
+    {
+        "id": "a76b000000000005",
+        "type": "api-current-state",
+        "z": "78d68859e621034c",
+        "name": "Read Downstairs Mode (live)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.downstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 280,
+        "y": 660,
+        "wires": [
+            [
+                "b7b0b2a783c4ccbf"
+            ]
+        ]
+    },
+    {
+        "id": "a76b000000000006",
+        "type": "api-current-state",
+        "z": "78d68859e621034c",
+        "name": "Read Upstairs Mode (live)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_select.upstairs_mode",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "none",
+        "entity_location": "data",
+        "override_data": "none",
+        "x": 280,
+        "y": 720,
+        "wires": [
+            [
+                "b06e959d5d6cbd70"
+            ]
+        ]
+    },
+    {
+        "id": "a76b000000000007",
+        "type": "change",
+        "z": "caa4c53b43842015",
+        "name": "x_test_only: notifyData -> payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "notifyData",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "a76b000000000008"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76b000000000008",
+        "type": "mqtt out",
+        "z": "caa4c53b43842015",
+        "name": "ack: front-door-notify",
+        "topic": "e/test/ack/frigate/front-door-notify",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 870,
+        "y": 280,
+        "wires": [],
+        "x_test_only": true
     }
 ]
