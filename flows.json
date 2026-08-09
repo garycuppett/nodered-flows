@@ -23411,5 +23411,353 @@
         "y": 280,
         "wires": [],
         "x_test_only": true
+    },
+    {
+        "id": "b2069a9fec5fd8fe",
+        "type": "mqtt in",
+        "z": "bbe8d5a269faf1a0",
+        "name": "",
+        "topic": "zwave/Isaac_Remote/central_scene/endpoint_0/scene/001",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1250,
+        "y": 780,
+        "wires": [
+            [
+                "c4d252a29ba23870"
+            ]
+        ]
+    },
+    {
+        "id": "c4d252a29ba23870",
+        "type": "switch",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Button Pressed",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 1650,
+        "y": 780,
+        "wires": [
+            [
+                "860ca3a0e4cb9c23"
+            ],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1c8d1dd56a0ec0f9",
+        "type": "mqtt in",
+        "z": "bbe8d5a269faf1a0",
+        "name": "",
+        "topic": "zwave/Isaac_Remote/central_scene/endpoint_0/scene/002",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1250,
+        "y": 940,
+        "wires": [
+            [
+                "efd21fd4ba27b449"
+            ]
+        ]
+    },
+    {
+        "id": "8134e3bf34ee8c26",
+        "type": "mqtt in",
+        "z": "bbe8d5a269faf1a0",
+        "name": "",
+        "topic": "zwave/Isaac_Remote/central_scene/endpoint_0/scene/003",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1250,
+        "y": 1080,
+        "wires": [
+            [
+                "098ce4075ab7b5ba"
+            ]
+        ]
+    },
+    {
+        "id": "098ce4075ab7b5ba",
+        "type": "switch",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Button Pressed",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 1650,
+        "y": 1080,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ed75dacb1d68a6e9",
+        "type": "mqtt in",
+        "z": "bbe8d5a269faf1a0",
+        "name": "",
+        "topic": "zwave/Isaac_Remote/central_scene/endpoint_0/scene/004",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1250,
+        "y": 1240,
+        "wires": [
+            [
+                "7d6475df28c7992b"
+            ]
+        ]
+    },
+    {
+        "id": "7d6475df28c7992b",
+        "type": "switch",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Button Pressed",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 1650,
+        "y": 1240,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "efd21fd4ba27b449",
+        "type": "switch",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Button Pressed",
+        "property": "payload.value",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 1650,
+        "y": 940,
+        "wires": [
+            [
+                "24d74ccbce0ecbc3"
+            ],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "58371e01973dacd9",
+        "type": "comment",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Isaac Room Remote",
+        "info": "",
+        "x": 1130,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "860ca3a0e4cb9c23",
+        "type": "api-call-service",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Toggle Isaac Bedroom Light",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.toggle",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.simpleconnect_fan_240488_isaac_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "toggle",
+        "x": 1890,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24d74ccbce0ecbc3",
+        "type": "api-call-service",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Toggle Isaac Fan",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.toggle",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "fan.simpleconnect_fan_240488_isaac_fan"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "toggle",
+        "x": 1860,
+        "y": 900,
+        "wires": [
+            []
+        ]
     }
 ]
