@@ -23759,5 +23759,1396 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "a76c000000000000",
+        "type": "tab",
+        "label": "Fan Receiver Self-Heal",
+        "disabled": false,
+        "env": [],
+        "info": "Watches the SimpleConnect fan/light pairs whose receiver power is gated by their ZEN32 relay (workshop, office, Isaac — NOT living room or loft: their relays do not feed the receiver). If both entities of a pair sit unavailable for 15 minutes, the relay is pulsed off/on (5 s) to reboot the receiver, rate-limited to once per 2 h per room, and Gary gets a push naming the room. Receivers restore their previous fan/light state after a power cut (verified on Isaac 2026-08-15), so a night-time heal cannot turn a light on."
+    },
+    {
+        "id": "a76c000000001000",
+        "type": "server-state-changed",
+        "z": "a76c000000000000",
+        "name": "Workshop light unavailable 15m",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "light.simpleconnect_fan_fb1f4c_workshop_light"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "unavailable",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "15",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "a76c000000001002"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000001001",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: force workshop self-heal",
+        "topic": "e/test/selfheal/workshop/force",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "a76c000000001002"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000001002",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Workshop fan also unavailable?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "fan.simpleconnect_fan_fb1f4c_workshop_fan",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "a76c000000001003"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c000000001003",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Workshop light still unavailable?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.simpleconnect_fan_fb1f4c_workshop_light",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "a76c000000001004"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c000000001004",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Rate limit: once per 2h",
+        "func": "const KEY = 'a76c_selfheal_last_workshop';\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Workshop self-heal suppressed (rate limit)');\n    return null;\n}\nflow.set(KEY, now);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 140,
+        "wires": [
+            [
+                "a76c000000001005"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000001005",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Workshop Receiver Power Off",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.workshop_scene_switch_workshop_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_off",
+        "x": 860,
+        "y": 140,
+        "wires": [
+            [
+                "a76c000000001006",
+                "a76c000000001007"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000001006",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/workshop/relay-off",
+        "topic": "e/test/ack/selfheal/workshop/relay-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1120,
+        "y": 100,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000001007",
+        "type": "delay",
+        "z": "a76c000000000000",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1090,
+        "y": 140,
+        "wires": [
+            [
+                "a76c000000001008"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000001008",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Workshop Receiver Power On",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.workshop_scene_switch_workshop_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "x": 1290,
+        "y": 140,
+        "wires": [
+            [
+                "a76c000000001009",
+                "a76c00000000100a"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000001009",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/workshop/relay-on",
+        "topic": "e/test/ack/selfheal/workshop/relay-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1540,
+        "y": 100,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000100a",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Compose Workshop self-heal notification",
+        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Workshop fan receiver — its fan and light had been unreachable for 15+ minutes.'\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1560,
+        "y": 180,
+        "wires": [
+            [
+                "a76c00000000100c",
+                "a76c00000000100b"
+            ]
+        ]
+    },
+    {
+        "id": "a76c00000000100b",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/workshop/notify",
+        "topic": "e/test/ack/selfheal/workshop/notify",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1810,
+        "y": 220,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000100c",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Gary Notifications On",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.gary_notifications",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1800,
+        "y": 180,
+        "wires": [
+            [
+                "a76c00000000100d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c00000000100d",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Notify Gary Phone",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "notify.mobile_app_gary_iphone",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "labelId": [],
+        "data": "notifyData",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "notify",
+        "service": "mobile_app_gary_iphone",
+        "x": 2030,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76c00000000100e",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: reset workshop rate limit",
+        "topic": "e/test/selfheal/workshop/reset",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "a76c00000000100f"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000100f",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "reset workshop rate limit",
+        "func": "flow.set('a76c_selfheal_last_workshop', 0);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000002000",
+        "type": "server-state-changed",
+        "z": "a76c000000000000",
+        "name": "Office light unavailable 15m",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "light.simpleconnect_fan_fd7705_office_light"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "unavailable",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "15",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "a76c000000002002"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000002001",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: force office self-heal",
+        "topic": "e/test/selfheal/office/force",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "a76c000000002002"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000002002",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Office fan also unavailable?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "fan.simpleconnect_fan_fd7705_office_fan",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "a76c000000002003"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c000000002003",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Office light still unavailable?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.simpleconnect_fan_fd7705_office_light",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 400,
+        "wires": [
+            [
+                "a76c000000002004"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c000000002004",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Rate limit: once per 2h",
+        "func": "const KEY = 'a76c_selfheal_last_office';\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Office self-heal suppressed (rate limit)');\n    return null;\n}\nflow.set(KEY, now);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 380,
+        "wires": [
+            [
+                "a76c000000002005"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000002005",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Office Receiver Power Off",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.office_scene_switch_office_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_off",
+        "x": 860,
+        "y": 380,
+        "wires": [
+            [
+                "a76c000000002006",
+                "a76c000000002007"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000002006",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/office/relay-off",
+        "topic": "e/test/ack/selfheal/office/relay-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1120,
+        "y": 340,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000002007",
+        "type": "delay",
+        "z": "a76c000000000000",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1090,
+        "y": 380,
+        "wires": [
+            [
+                "a76c000000002008"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000002008",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Office Receiver Power On",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.office_scene_switch_office_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "x": 1290,
+        "y": 380,
+        "wires": [
+            [
+                "a76c000000002009",
+                "a76c00000000200a"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000002009",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/office/relay-on",
+        "topic": "e/test/ack/selfheal/office/relay-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1540,
+        "y": 340,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000200a",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Compose Office self-heal notification",
+        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Office fan receiver — its fan and light had been unreachable for 15+ minutes.'\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1560,
+        "y": 420,
+        "wires": [
+            [
+                "a76c00000000200c",
+                "a76c00000000200b"
+            ]
+        ]
+    },
+    {
+        "id": "a76c00000000200b",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/office/notify",
+        "topic": "e/test/ack/selfheal/office/notify",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1810,
+        "y": 460,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000200c",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Gary Notifications On",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.gary_notifications",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1800,
+        "y": 420,
+        "wires": [
+            [
+                "a76c00000000200d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c00000000200d",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Notify Gary Phone",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "notify.mobile_app_gary_iphone",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "labelId": [],
+        "data": "notifyData",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "notify",
+        "service": "mobile_app_gary_iphone",
+        "x": 2030,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76c00000000200e",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: reset office rate limit",
+        "topic": "e/test/selfheal/office/reset",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "a76c00000000200f"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000200f",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "reset office rate limit",
+        "func": "flow.set('a76c_selfheal_last_office', 0);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 440,
+        "wires": [
+            []
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000003000",
+        "type": "server-state-changed",
+        "z": "a76c000000000000",
+        "name": "Isaac light unavailable 15m",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "light.simpleconnect_fan_240488_isaac_light"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "unavailable",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "15",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 150,
+        "y": 600,
+        "wires": [
+            [
+                "a76c000000003002"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000003001",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: force isaac self-heal",
+        "topic": "e/test/selfheal/isaac/force",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 640,
+        "wires": [
+            [
+                "a76c000000003002"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000003002",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Isaac fan also unavailable?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "fan.simpleconnect_fan_240488_isaac_fan",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 600,
+        "wires": [
+            [
+                "a76c000000003003"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c000000003003",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Isaac light still unavailable?",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.simpleconnect_fan_240488_isaac_light",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 640,
+        "wires": [
+            [
+                "a76c000000003004"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c000000003004",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Rate limit: once per 2h",
+        "func": "const KEY = 'a76c_selfheal_last_isaac';\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Isaac self-heal suppressed (rate limit)');\n    return null;\n}\nflow.set(KEY, now);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 620,
+        "wires": [
+            [
+                "a76c000000003005"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000003005",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Isaac Receiver Power Off",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.isaac_scene_switch_isaac_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_off",
+        "x": 860,
+        "y": 620,
+        "wires": [
+            [
+                "a76c000000003006",
+                "a76c000000003007"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000003006",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/isaac/relay-off",
+        "topic": "e/test/ack/selfheal/isaac/relay-off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1120,
+        "y": 580,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000003007",
+        "type": "delay",
+        "z": "a76c000000000000",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1090,
+        "y": 620,
+        "wires": [
+            [
+                "a76c000000003008"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000003008",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Isaac Receiver Power On",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "switch.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.isaac_scene_switch_isaac_scene_switch_switch"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "x": 1290,
+        "y": 620,
+        "wires": [
+            [
+                "a76c000000003009",
+                "a76c00000000300a"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000003009",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/isaac/relay-on",
+        "topic": "e/test/ack/selfheal/isaac/relay-on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1540,
+        "y": 580,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000300a",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Compose Isaac self-heal notification",
+        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Isaac fan receiver — its fan and light had been unreachable for 15+ minutes.'\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1560,
+        "y": 660,
+        "wires": [
+            [
+                "a76c00000000300c",
+                "a76c00000000300b"
+            ]
+        ]
+    },
+    {
+        "id": "a76c00000000300b",
+        "type": "mqtt out",
+        "z": "a76c000000000000",
+        "name": "ack: selfheal/isaac/notify",
+        "topic": "e/test/ack/selfheal/isaac/notify",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1810,
+        "y": 700,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000300c",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Gary Notifications On",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.gary_notifications",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1800,
+        "y": 660,
+        "wires": [
+            [
+                "a76c00000000300d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76c00000000300d",
+        "type": "api-call-service",
+        "z": "a76c000000000000",
+        "name": "Notify Gary Phone",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "notify.mobile_app_gary_iphone",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "labelId": [],
+        "data": "notifyData",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "notify",
+        "service": "mobile_app_gary_iphone",
+        "x": 2030,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76c00000000300e",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: reset isaac rate limit",
+        "topic": "e/test/selfheal/isaac/reset",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 680,
+        "wires": [
+            [
+                "a76c00000000300f"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c00000000300f",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "reset isaac rate limit",
+        "func": "flow.set('a76c_selfheal_last_isaac', 0);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 680,
+        "wires": [
+            []
+        ],
+        "x_test_only": true
     }
 ]
