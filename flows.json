@@ -1416,45 +1416,13 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1040,
+        "x": 640,
         "y": 360,
         "wires": [
             [
-                "e89dcf5b11073a84"
+                "a76e000000000001"
             ]
         ]
-    },
-    {
-        "id": "1852b49535329e06",
-        "type": "debug",
-        "z": "695a25616d08159f",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1440,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "97e414228ccc3d3b",
-        "type": "debug",
-        "z": "695a25616d08159f",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1980,
-        "y": 420,
-        "wires": []
     },
     {
         "id": "55a61798b3266ec9",
@@ -1480,22 +1448,6 @@
                 "7674acdf7e1f7c9c"
             ]
         ]
-    },
-    {
-        "id": "7c3b4d741dc8c518",
-        "type": "debug",
-        "z": "695a25616d08159f",
-        "name": "debug 11",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1640,
-        "y": 420,
-        "wires": []
     },
     {
         "id": "30751aa14de66805",
@@ -1583,12 +1535,10 @@
         "blockInputOverrides": false,
         "domain": "lock",
         "service": "lock",
-        "x": 850,
-        "y": 360,
+        "x": 400,
+        "y": 420,
         "wires": [
-            [
-                "05b08d91c3cb566f"
-            ]
+            []
         ]
     },
     {
@@ -1602,10 +1552,10 @@
         "action": "lock.lock",
         "floorId": [],
         "areaId": [],
-        "deviceId": [
-            "1bde58c27b1f9cc2f7f52f38959144bf"
+        "deviceId": [],
+        "entityId": [
+            "lock.front_door_lock"
         ],
-        "entityId": [],
         "labelId": [],
         "data": "",
         "dataType": "jsonata",
@@ -1617,11 +1567,9 @@
         "domain": "lock",
         "service": "lock",
         "x": 400,
-        "y": 360,
+        "y": 300,
         "wires": [
-            [
-                "8c6be48bedd9d99e"
-            ]
+            []
         ]
     },
     {
@@ -1649,7 +1597,7 @@
         "blockInputOverrides": false,
         "domain": "alarm_control_panel",
         "service": "alarm_arm_home",
-        "x": 2030,
+        "x": 2000,
         "y": 360,
         "wires": [
             []
@@ -1793,12 +1741,10 @@
         "blockInputOverrides": false,
         "domain": "lock",
         "service": "lock",
-        "x": 620,
+        "x": 400,
         "y": 360,
         "wires": [
-            [
-                "4f5547e10ee7dde4"
-            ]
+            []
         ]
     },
     {
@@ -1837,14 +1783,14 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 1230,
+        "x": 1060,
         "y": 360,
         "wires": [
             [
                 "a8131990ac7efd53"
             ],
             [
-                "1852b49535329e06"
+                "a76e000000000002"
             ]
         ]
     },
@@ -1884,14 +1830,14 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 1780,
+        "x": 1520,
         "y": 360,
         "wires": [
             [
-                "75f670238da8f15b"
+                "a76e000000000005"
             ],
             [
-                "97e414228ccc3d3b"
+                "a76e000000000004"
             ]
         ]
     },
@@ -1931,14 +1877,14 @@
         "override_payload": "msg",
         "entity_location": "data",
         "override_data": "msg",
-        "x": 1510,
+        "x": 1290,
         "y": 360,
         "wires": [
             [
                 "0a918a4b81cc53a8"
             ],
             [
-                "7c3b4d741dc8c518"
+                "a76e000000000003"
             ]
         ]
     },
@@ -2055,7 +2001,10 @@
         "wires": [
             [
                 "30751aa14de66805",
-                "cb53ec33bf6a560b"
+                "cb53ec33bf6a560b",
+                "8c6be48bedd9d99e",
+                "4f5547e10ee7dde4",
+                "05b08d91c3cb566f"
             ]
         ]
     },
@@ -2114,7 +2063,10 @@
         "wires": [
             [
                 "30751aa14de66805",
-                "cb53ec33bf6a560b"
+                "cb53ec33bf6a560b",
+                "8c6be48bedd9d99e",
+                "4f5547e10ee7dde4",
+                "05b08d91c3cb566f"
             ]
         ]
     },
@@ -2289,7 +2241,10 @@
         "wires": [
             [
                 "30751aa14de66805",
-                "cb53ec33bf6a560b"
+                "cb53ec33bf6a560b",
+                "8c6be48bedd9d99e",
+                "4f5547e10ee7dde4",
+                "05b08d91c3cb566f"
             ]
         ]
     },
@@ -23941,8 +23896,8 @@
         "id": "a76c000000001004",
         "type": "function",
         "z": "a76c000000000000",
-        "name": "Rate limit: once per 2h",
-        "func": "const KEY = 'a76c_selfheal_last_workshop';\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Workshop self-heal suppressed (rate limit)');\n    return null;\n}\nflow.set(KEY, now);\nreturn msg;",
+        "name": "Rate limit: once per 2h, 3 tries",
+        "func": "const KEY = 'a76c_selfheal_last_workshop';\nconst TRIES = 'a76c_selfheal_tries_workshop';\nconst MAX_TRIES = 3;\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Workshop self-heal suppressed (rate limit)');\n    return null;\n}\n// A receiver still down after MAX_TRIES heals has lost its WiFi provisioning\n// (needs a factory reset + re-pair) - stop pulsing the relay every 2 h until\n// the 15-minute poll sees it online again and resets the count.\nconst tries = flow.get(TRIES) || 0;\nif (tries >= MAX_TRIES) {\n    node.warn('Workshop self-heal paused after ' + MAX_TRIES + ' failed heals');\n    return null;\n}\nflow.set(KEY, now);\nflow.set(TRIES, tries + 1);\nmsg.attempt = tries + 1;\nmsg.maxAttempts = MAX_TRIES;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -24083,7 +24038,7 @@
         "type": "function",
         "z": "a76c000000000000",
         "name": "Compose Workshop self-heal notification",
-        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Workshop fan receiver — its fan and light had been unreachable for 15+ minutes.'\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
+        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Workshop fan receiver — its fan and light had been unreachable for 15+ minutes.' +\n        (msg.attempt >= msg.maxAttempts\n            ? ' That was attempt ' + msg.attempt + ' of ' + msg.maxAttempts + ', so self-heal is paused until it comes back online. If it stays down, it needs a factory reset and re-pair.'\n            : '')\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -24214,7 +24169,7 @@
         "type": "function",
         "z": "a76c000000000000",
         "name": "reset workshop rate limit",
-        "func": "flow.set('a76c_selfheal_last_workshop', 0);\nreturn null;",
+        "func": "flow.set('a76c_selfheal_last_workshop', 0);\nif (msg.payload !== 'rate') flow.set('a76c_selfheal_tries_workshop', 0);\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -24402,8 +24357,8 @@
         "id": "a76c000000002004",
         "type": "function",
         "z": "a76c000000000000",
-        "name": "Rate limit: once per 2h",
-        "func": "const KEY = 'a76c_selfheal_last_office';\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Office self-heal suppressed (rate limit)');\n    return null;\n}\nflow.set(KEY, now);\nreturn msg;",
+        "name": "Rate limit: once per 2h, 3 tries",
+        "func": "const KEY = 'a76c_selfheal_last_office';\nconst TRIES = 'a76c_selfheal_tries_office';\nconst MAX_TRIES = 3;\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Office self-heal suppressed (rate limit)');\n    return null;\n}\n// A receiver still down after MAX_TRIES heals has lost its WiFi provisioning\n// (needs a factory reset + re-pair) - stop pulsing the relay every 2 h until\n// the 15-minute poll sees it online again and resets the count.\nconst tries = flow.get(TRIES) || 0;\nif (tries >= MAX_TRIES) {\n    node.warn('Office self-heal paused after ' + MAX_TRIES + ' failed heals');\n    return null;\n}\nflow.set(KEY, now);\nflow.set(TRIES, tries + 1);\nmsg.attempt = tries + 1;\nmsg.maxAttempts = MAX_TRIES;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -24544,7 +24499,7 @@
         "type": "function",
         "z": "a76c000000000000",
         "name": "Compose Office self-heal notification",
-        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Office fan receiver — its fan and light had been unreachable for 15+ minutes.'\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
+        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Office fan receiver — its fan and light had been unreachable for 15+ minutes.' +\n        (msg.attempt >= msg.maxAttempts\n            ? ' That was attempt ' + msg.attempt + ' of ' + msg.maxAttempts + ', so self-heal is paused until it comes back online. If it stays down, it needs a factory reset and re-pair.'\n            : '')\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -24675,7 +24630,7 @@
         "type": "function",
         "z": "a76c000000000000",
         "name": "reset office rate limit",
-        "func": "flow.set('a76c_selfheal_last_office', 0);\nreturn null;",
+        "func": "flow.set('a76c_selfheal_last_office', 0);\nif (msg.payload !== 'rate') flow.set('a76c_selfheal_tries_office', 0);\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -24863,8 +24818,8 @@
         "id": "a76c000000003004",
         "type": "function",
         "z": "a76c000000000000",
-        "name": "Rate limit: once per 2h",
-        "func": "const KEY = 'a76c_selfheal_last_isaac';\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Isaac self-heal suppressed (rate limit)');\n    return null;\n}\nflow.set(KEY, now);\nreturn msg;",
+        "name": "Rate limit: once per 2h, 3 tries",
+        "func": "const KEY = 'a76c_selfheal_last_isaac';\nconst TRIES = 'a76c_selfheal_tries_isaac';\nconst MAX_TRIES = 3;\nconst now = Date.now();\nconst last = flow.get(KEY) || 0;\nif (now - last < 2 * 60 * 60 * 1000) {\n    node.warn('Isaac self-heal suppressed (rate limit)');\n    return null;\n}\n// A receiver still down after MAX_TRIES heals has lost its WiFi provisioning\n// (needs a factory reset + re-pair) - stop pulsing the relay every 2 h until\n// the 15-minute poll sees it online again and resets the count.\nconst tries = flow.get(TRIES) || 0;\nif (tries >= MAX_TRIES) {\n    node.warn('Isaac self-heal paused after ' + MAX_TRIES + ' failed heals');\n    return null;\n}\nflow.set(KEY, now);\nflow.set(TRIES, tries + 1);\nmsg.attempt = tries + 1;\nmsg.maxAttempts = MAX_TRIES;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -25005,7 +24960,7 @@
         "type": "function",
         "z": "a76c000000000000",
         "name": "Compose Isaac self-heal notification",
-        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Isaac fan receiver — its fan and light had been unreachable for 15+ minutes.'\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
+        "func": "msg.notifyData = {\n    title: 'Fan Receiver Self-Heal',\n    message: 'Power-cycled the Isaac fan receiver — its fan and light had been unreachable for 15+ minutes.' +\n        (msg.attempt >= msg.maxAttempts\n            ? ' That was attempt ' + msg.attempt + ' of ' + msg.maxAttempts + ', so self-heal is paused until it comes back online. If it stays down, it needs a factory reset and re-pair.'\n            : '')\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -25136,7 +25091,7 @@
         "type": "function",
         "z": "a76c000000000000",
         "name": "reset isaac rate limit",
-        "func": "flow.set('a76c_selfheal_last_isaac', 0);\nreturn null;",
+        "func": "flow.set('a76c_selfheal_last_isaac', 0);\nif (msg.payload !== 'rate') flow.set('a76c_selfheal_tries_isaac', 0);\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -25172,6 +25127,555 @@
             [
                 "7278f5e6f101ae81",
                 "8758fc412571d622"
+            ]
+        ]
+    },
+    {
+        "id": "a76e000000000001",
+        "type": "change",
+        "z": "695a25616d08159f",
+        "name": "Start lock check",
+        "rules": [
+            {
+                "t": "set",
+                "p": "unlocked",
+                "pt": "msg",
+                "to": "[]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 360,
+        "wires": [
+            [
+                "e89dcf5b11073a84"
+            ]
+        ]
+    },
+    {
+        "id": "a76e000000000002",
+        "type": "change",
+        "z": "695a25616d08159f",
+        "name": "Note front door not locked",
+        "rules": [
+            {
+                "t": "set",
+                "p": "unlocked",
+                "pt": "msg",
+                "to": "$append(unlocked, \"Front door (\" & payload & \")\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 420,
+        "wires": [
+            [
+                "a8131990ac7efd53"
+            ]
+        ]
+    },
+    {
+        "id": "a76e000000000003",
+        "type": "change",
+        "z": "695a25616d08159f",
+        "name": "Note back door not locked",
+        "rules": [
+            {
+                "t": "set",
+                "p": "unlocked",
+                "pt": "msg",
+                "to": "$append(unlocked, \"Back door (\" & payload & \")\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 420,
+        "wires": [
+            [
+                "0a918a4b81cc53a8"
+            ]
+        ]
+    },
+    {
+        "id": "a76e000000000004",
+        "type": "change",
+        "z": "695a25616d08159f",
+        "name": "Note garage door not locked",
+        "rules": [
+            {
+                "t": "set",
+                "p": "unlocked",
+                "pt": "msg",
+                "to": "$append(unlocked, \"Garage door (\" & payload & \")\")",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1640,
+        "y": 420,
+        "wires": [
+            [
+                "a76e000000000005"
+            ]
+        ]
+    },
+    {
+        "id": "a76e000000000005",
+        "type": "switch",
+        "z": "695a25616d08159f",
+        "name": "All doors locked?",
+        "property": "unlocked",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1760,
+        "y": 360,
+        "wires": [
+            [
+                "75f670238da8f15b",
+                "a76e000000000010"
+            ],
+            [
+                "a76e000000000006"
+            ]
+        ]
+    },
+    {
+        "id": "a76e000000000006",
+        "type": "function",
+        "z": "695a25616d08159f",
+        "name": "Compose lock-failure notification",
+        "func": "// Lights-out ran but at least one door isn't locked 20 s later (jammed bolt,\n// dead lock battery, integration down). Ring is only armed when all three\n// are locked, so say so - otherwise the house sits unarmed and nobody knows.\nmsg.notifyData = {\n    title: 'Doors not locked',\n    message: 'Lights-out ran, but these did not lock: ' + msg.unlocked.join(', ') +\n        '. The Ring alarm was NOT armed.',\n    data: { push: { 'interruption-level': 'time-sensitive' } }\n};\nmsg.payload = msg.notifyData;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1990,
+        "y": 440,
+        "wires": [
+            [
+                "a76e000000000007",
+                "a76e000000000011"
+            ]
+        ]
+    },
+    {
+        "id": "a76e000000000007",
+        "type": "api-current-state",
+        "z": "695a25616d08159f",
+        "name": "Gary Notifications On",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "input_boolean.gary_notifications",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 2230,
+        "y": 440,
+        "wires": [
+            [
+                "a76e000000000008"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a76e000000000008",
+        "type": "api-call-service",
+        "z": "695a25616d08159f",
+        "name": "Notify Gary Phone",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "notify.gary_phone",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "labelId": [],
+        "data": "notifyData",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "notify",
+        "service": "gary_phone",
+        "x": 2440,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76e000000000010",
+        "type": "mqtt out",
+        "z": "695a25616d08159f",
+        "name": "ack: lights-out/armed",
+        "topic": "e/test/ack/lights-out/armed",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 2000,
+        "y": 300,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76e000000000011",
+        "type": "mqtt out",
+        "z": "695a25616d08159f",
+        "name": "ack: lights-out/unlocked",
+        "topic": "e/test/ack/lights-out/unlocked",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 2000,
+        "y": 500,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000001010",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Workshop light unavailable 15m? (poll)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.simpleconnect_fan_fb1f4c_workshop_light",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "15",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 150,
+        "y": 240,
+        "wires": [
+            [
+                "a76c000000001002"
+            ],
+            [
+                "a76c000000001011"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000001011",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Workshop receiver online: re-arm",
+        "func": "if (msg.payload !== 'unavailable') flow.set('a76c_selfheal_tries_workshop', 0);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76c000000001012",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: poll workshop",
+        "topic": "e/test/selfheal/workshop/poll",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "a76c000000001010"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000002010",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Office light unavailable 15m? (poll)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.simpleconnect_fan_fd7705_office_light",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "15",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 150,
+        "y": 480,
+        "wires": [
+            [
+                "a76c000000002002"
+            ],
+            [
+                "a76c000000002011"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000002011",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Office receiver online: re-arm",
+        "func": "if (msg.payload !== 'unavailable') flow.set('a76c_selfheal_tries_office', 0);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76c000000002012",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: poll office",
+        "topic": "e/test/selfheal/office/poll",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 520,
+        "wires": [
+            [
+                "a76c000000002010"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000003010",
+        "type": "api-current-state",
+        "z": "a76c000000000000",
+        "name": "Isaac light unavailable 15m? (poll)",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "unavailable",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "light.simpleconnect_fan_240488_isaac_light",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "15",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 150,
+        "y": 720,
+        "wires": [
+            [
+                "a76c000000003002"
+            ],
+            [
+                "a76c000000003011"
+            ]
+        ]
+    },
+    {
+        "id": "a76c000000003011",
+        "type": "function",
+        "z": "a76c000000000000",
+        "name": "Isaac receiver online: re-arm",
+        "func": "if (msg.payload !== 'unavailable') flow.set('a76c_selfheal_tries_isaac', 0);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76c000000003012",
+        "type": "mqtt in",
+        "z": "a76c000000000000",
+        "name": "test: poll isaac",
+        "topic": "e/test/selfheal/isaac/poll",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "955da5c8365fe376",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 760,
+        "wires": [
+            [
+                "a76c000000003010"
+            ]
+        ],
+        "x_test_only": true
+    },
+    {
+        "id": "a76c000000000001",
+        "type": "inject",
+        "z": "a76c000000000000",
+        "name": "Every 15 min",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 40,
+        "wires": [
+            [
+                "a76c000000001010",
+                "a76c000000002010",
+                "a76c000000003010"
             ]
         ]
     }
