@@ -6431,7 +6431,7 @@
         "y": 940,
         "wires": [
             [
-                "33dacfac44e25f8f"
+                "a76f000000000001"
             ],
             [],
             [],
@@ -7992,11 +7992,11 @@
         "id": "33dacfac44e25f8f",
         "type": "api-call-service",
         "z": "bbe8d5a269faf1a0",
-        "name": "Toggle TV",
+        "name": "Turn on TV",
         "server": "fc3c38fd.04c728",
         "version": 7,
         "debugenabled": false,
-        "action": "media_player.toggle",
+        "action": "media_player.turn_on",
         "floorId": [],
         "areaId": [],
         "deviceId": [],
@@ -8012,8 +8012,8 @@
         "queue": "none",
         "blockInputOverrides": false,
         "domain": "media_player",
-        "service": "toggle",
-        "x": 820,
+        "service": "turn_on",
+        "x": 1330,
         "y": 900,
         "wires": [
             []
@@ -25678,5 +25678,150 @@
                 "a76c000000003010"
             ]
         ]
+    },
+    {
+        "id": "a76f000000000001",
+        "type": "api-current-state",
+        "z": "bbe8d5a269faf1a0",
+        "name": "TV state",
+        "server": "fc3c38fd.04c728",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "media_player.visionmaster_television",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 830,
+        "y": 940,
+        "wires": [
+            [
+                "a76f000000000002"
+            ]
+        ]
+    },
+    {
+        "id": "a76f000000000002",
+        "type": "function",
+        "z": "bbe8d5a269faf1a0",
+        "name": "On, or off unless it just came on",
+        "func": "// Was a blind media_player.toggle. Picking up the Siri Remote wakes the Apple TV,\n// which powers the projector on over HDMI-CEC; a tap a couple of seconds later\n// toggled it straight back off (10/25, 10/26). A tap in the first 30 s after\n// power-on now leaves it on.\nconst JUST_ON_MS = 30 * 1000;\nconst tv = msg.data || {};\nif (['off', 'standby', 'unavailable', 'unknown'].includes(tv.state)) {\n    msg.payload = 'on';\n    return [msg, null, null];\n}\nconst onFor = Date.now() - new Date(tv.last_changed).getTime();\nif (onFor < JUST_ON_MS) {\n    node.status({ text: 'ignored tap: on for ' + Math.round(onFor / 1000) + ' s' });\n    msg.payload = 'ignored';\n    return [null, null, msg];\n}\nmsg.payload = 'off';\nreturn [null, msg, null];",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 940,
+        "wires": [
+            [
+                "33dacfac44e25f8f",
+                "a76f000000000010"
+            ],
+            [
+                "a76f000000000003",
+                "a76f000000000011"
+            ],
+            [
+                "a76f000000000012"
+            ]
+        ]
+    },
+    {
+        "id": "a76f000000000003",
+        "type": "api-call-service",
+        "z": "bbe8d5a269faf1a0",
+        "name": "Turn off TV",
+        "server": "fc3c38fd.04c728",
+        "version": 7,
+        "debugenabled": false,
+        "action": "media_player.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.visionmaster_television"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "media_player",
+        "service": "turn_off",
+        "x": 1330,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a76f000000000010",
+        "type": "mqtt out",
+        "z": "bbe8d5a269faf1a0",
+        "name": "ack: media-room-tv/on",
+        "topic": "e/test/ack/media-room-tv/on",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1550,
+        "y": 900,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76f000000000011",
+        "type": "mqtt out",
+        "z": "bbe8d5a269faf1a0",
+        "name": "ack: media-room-tv/off",
+        "topic": "e/test/ack/media-room-tv/off",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1550,
+        "y": 960,
+        "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a76f000000000012",
+        "type": "mqtt out",
+        "z": "bbe8d5a269faf1a0",
+        "name": "ack: media-room-tv/ignored",
+        "topic": "e/test/ack/media-room-tv/ignored",
+        "qos": "0",
+        "retain": "false",
+        "broker": "955da5c8365fe376",
+        "x": 1330,
+        "y": 1020,
+        "wires": [],
+        "x_test_only": true
     }
 ]
