@@ -10080,7 +10080,7 @@
         "y": 1800,
         "wires": [
             [
-                "f8e5f21b719a2fc0"
+                "a770000000000003"
             ]
         ]
     },
@@ -10636,7 +10636,7 @@
             "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
         ],
         "labelId": [],
-        "data": "{\"temperature\":{{global.downstairs_climate_heat_temp}}}",
+        "data": "{\"temperature\":{{heatCmd}}}",
         "dataType": "json",
         "mergeContext": "",
         "mustacheAltTags": false,
@@ -10678,37 +10678,6 @@
         "service": "set_temperature",
         "x": 1000,
         "y": 1560,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f8e5f21b719a2fc0",
-        "type": "api-call-service",
-        "z": "368e45adda3836be",
-        "name": "Set Downstairs HeatTemp",
-        "server": "fc3c38fd.04c728",
-        "version": 7,
-        "debugenabled": false,
-        "action": "climate.set_temperature",
-        "floorId": [],
-        "areaId": [],
-        "deviceId": [],
-        "entityId": [
-            "climate.downstairs_honeywell_downstairs_honeywell_climate_2"
-        ],
-        "labelId": [],
-        "data": "{\"temperature\":{{global.downstairs_climate_heat_temp}}}",
-        "dataType": "json",
-        "mergeContext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "blockInputOverrides": true,
-        "domain": "climate",
-        "service": "set_temperature",
-        "x": 990,
-        "y": 1800,
         "wires": [
             []
         ]
@@ -11081,7 +11050,7 @@
         "y": 2560,
         "wires": [
             [
-                "a6b134969ff4b2a0"
+                "a770000000000003"
             ],
             [
                 "2fe120a1081d51bf"
@@ -21417,7 +21386,7 @@
                 "e220fc8b75c6798e"
             ],
             [
-                "a6b134969ff4b2a0"
+                "a770000000000003"
             ]
         ]
     },
@@ -21906,7 +21875,7 @@
         "type": "function",
         "z": "368e45adda3836be",
         "name": "Downstairs Wall Setpoint Adopter",
-        "func": "// Adopt a wall-unit setpoint change into the Downstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <40s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\nconst touched = global.get(\"downstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 40000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
+        "func": "// Adopt a wall-unit setpoint change into the Downstairs helper (hardware ->\n// helper). Values were re-read AFTER the 20s settle delay. Guards:\n// - a setpoint equal to either helper is an echo of our own command\n// - a helper that moved <40s ago may not have echoed back yet; adopting\n//   now would revert the user's dashboard tap\nconst ent = msg.climateEntity || {};\nconst sp = Number((ent.attributes || {}).temperature);\nif (!isFinite(sp)) return null;\nconst cool = Number(msg.coolTemp);\nconst heat = Number(msg.heatTemp);\nif ((isFinite(cool) && Math.abs(sp - cool) < 0.25) ||\n    (isFinite(heat) && Math.abs(sp - heat) < 0.25)) return null;\n// a770: 60 while the bedroom heat veto is holding (or just released) is\n// our own hold command, not a wall change\nif (ent.state === \"heat\" && Math.abs(sp - 60) < 0.25 &&\n    (flow.get(\"a770_hold\") ||\n     Date.now() - (flow.get(\"a770_last_send\") || 0) < 60000)) return null;\nconst touched = global.get(\"downstairs_setpoint_touched\") || 0;\nif (Date.now() - touched < 40000) {\n    node.status({ fill: \"yellow\", shape: \"ring\", text: \"helper just moved; skip\" });\n    return null;\n}\nconst clamped = Math.min(85, Math.max(60, sp));\nif (ent.state === \"cool\" && isFinite(cool)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt cool \" + clamped });\n    return [{ payload: { value: clamped } }, null];\n}\nif (ent.state === \"heat\" && isFinite(heat)) {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"adopt heat \" + clamped });\n    return [null, { payload: { value: clamped } }];\n}\nreturn null;\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -25822,6 +25791,288 @@
         "x": 1330,
         "y": 1020,
         "wires": [],
+        "x_test_only": true
+    },
+    {
+        "id": "a770000000000009",
+        "type": "comment",
+        "z": "368e45adda3836be",
+        "name": "Downstairs bedroom night heat veto — furnace held off while the bedroom is already warm",
+        "info": "",
+        "x": 330,
+        "y": 4280,
+        "wires": []
+    },
+    {
+        "id": "a770000000000001",
+        "type": "server-state-changed",
+        "z": "368e45adda3836be",
+        "name": "Bedroom temp / phone charger / thermostat changed",
+        "server": "fc3c38fd.04c728",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "sensor.bedroom_temperature_temperature",
+                "sensor.gary_iphone_battery_state",
+                "person.gary",
+                "climate.downstairs_honeywell_downstairs_honeywell_climate_2",
+                "input_number.downstairs_heat_temp"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "vetoEntity",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 250,
+        "y": 4320,
+        "wires": [
+            [
+                "a770000000000003"
+            ]
+        ]
+    },
+    {
+        "id": "a770000000000002",
+        "type": "inject",
+        "z": "368e45adda3836be",
+        "name": "every 5 min (and 20s after start)",
+        "props": [
+            {
+                "p": "vetoTick",
+                "v": "true",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "20",
+        "topic": "",
+        "x": 190,
+        "y": 4370,
+        "wires": [
+            [
+                "a770000000000003"
+            ]
+        ]
+    },
+    {
+        "id": "a770000000000003",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "name": "Downstairs Bedroom Heat Veto",
+        "func": "// Downstairs bedroom night heat veto (a770). The thermostat only knows the\n// temperature at the wall where it hangs, which runs several degrees colder\n// than the bedroom people sleep in. At night, while downstairs is heating\n// and the bedroom is already MARGIN above the heat helper, the furnace is\n// held off by sending the hardware HOLD_SP instead of the helper value; it\n// is released once the bedroom falls to within RELEASE of the helper.\n//\n// Every downstairs heat-setpoint push goes through this node (\"push\"\n// messages); the a770 listeners and the 5-minute tick send \"eval\" messages\n// (msg.vetoEntity / msg.vetoTick). Entity states are cached in flow context\n// from the listeners -- a missing or dead input fails OPEN (no veto).\n//\n// Night = 10:45 PM until Gary's phone comes off the charger in the morning.\n// If the phone was not charged that night (or after an NR restart) it ends\n// at the morning schedule tick; it never runs past 10 AM.\nconst HOLD_SP = 60;                      // degrees F sent while holding\nconst MARGIN = 2.0;                      // hold at bedroom >= heat + MARGIN\nconst RELEASE = 1.0;                     // release at bedroom <= heat + RELEASE\nconst MIN_FLIP_MS = 10 * 60 * 1000;      // min gap between hold/release flips\nconst ECHO_MS = 60 * 1000;               // our own command may still be echoing\nconst YIELD_MS = 45 * 1000;              // leave a wall bump alone this long\nconst STALE_MS = 3 * 60 * 60 * 1000;     // bedroom reading older than this = dead\nconst BOOT_MS = 15 * 1000;               // park pushes while the cache fills\nconst START = 22 * 60 + 45;              // night schedule tick\nconst EARLY = 4 * 60;                    // before this, an unplugged phone is not \"up\"\nconst HARD_STOP = 10 * 60;\nconst CLIMATE = \"climate.downstairs_honeywell_downstairs_honeywell_climate_2\";\nconst HEAT = \"input_number.downstairs_heat_temp\";\nconst BEDROOM = \"sensor.bedroom_temperature_temperature\";\nconst PHONE = \"sensor.gary_iphone_battery_state\";\nconst PERSON = \"person.gary\";\n\nconst nowMs = Date.now();\nconst cache = flow.get(\"a770_states\") || {};\nconst isEval = !!(msg.vetoEntity || msg.vetoTick);\nif (msg.vetoEntity && msg.vetoEntity.entity_id) {\n    cache[msg.vetoEntity.entity_id] = msg.vetoEntity;\n    flow.set(\"a770_states\", cache);\n}\nlet isPush = !isEval;\n\n// After an NR start the cache is empty for a moment. Park heat pushes until\n// it fills (or BOOT_MS passes) so a held-off furnace is not kicked on.\nlet boot = context.get(\"boot\");\nif (!boot) { boot = nowMs; context.set(\"boot\", boot); }\nconst primed = [CLIMATE, HEAT, BEDROOM, PHONE, PERSON].every(id => cache[id]);\nif (!primed && nowMs - boot < BOOT_MS) {\n    if (isPush) context.set(\"pending\", true);\n    return null;\n}\nif (context.get(\"pending\")) { context.set(\"pending\", false); isPush = true; }\n\n// --- is it night? ---------------------------------------------------------\nconst clock = flow.get(\"a770_test_clock\");   // only ever set by test nodes\nconst d = new Date();\nconst day = clock ? clock.day : d.getDay();\nconst mins = clock ? clock.minutes : d.getHours() * 60 + d.getMinutes();\nconst tick = (day === 0 || day === 6) ? 8 * 60 + 30 : 7 * 60;\nconst phone = (cache[PHONE] || {}).state;\nconst home = (cache[PERSON] || {}).state === \"home\";\nconst onCharger = home && (phone === \"Charging\" || phone === \"Full\");\nconst clockNight = mins >= START || mins < tick;\nif (onCharger && clockNight) flow.set(\"a770_charged_at\", nowMs);\nconst chargedTonight = nowMs - (flow.get(\"a770_charged_at\") || 0) < 12 * 3600 * 1000;\nlet night;\nif (mins >= START || mins < EARLY) night = true;\nelse if (mins < tick) night = !(phone === \"Not Charging\" && chargedTonight);\nelse if (mins < HARD_STOP) night = onCharger;\nelse night = false;\n\n// --- inputs ---------------------------------------------------------------\nconst num = v => (v === undefined || v === null || v === \"\") ? NaN : Number(v);\nconst cl = cache[CLIMATE] || {};\nconst hw = cl.state;\nconst hwSp = num((cl.attributes || {}).temperature);\nconst atHold = isFinite(hwSp) && Math.abs(hwSp - HOLD_SP) < 0.25;\nconst gHeat = num(global.get(\"downstairs_climate_heat_temp\"));\nconst cHeat = num((cache[HEAT] || {}).state);\nconst heat = isPush ? (isFinite(gHeat) ? gHeat : cHeat) : (isFinite(cHeat) ? cHeat : gHeat);\nconst b = cache[BEDROOM] || {};\nconst bedroom = num(b.state);\nconst bedroomAt = Date.parse(b.last_updated || b.last_changed || \"\");\nconst fresh = isFinite(bedroom) && isFinite(bedroomAt) && nowMs - bedroomAt < STALE_MS;\nconst heatSide = hw === \"heat\" || isPush;\n\nlet holding = flow.get(\"a770_hold\");\nif (holding === undefined) {\n    // NR restarted: the hardware setpoint is the only record of a hold\n    holding = hw === \"heat\" && atHold && isFinite(heat) && heat > HOLD_SP + 0.25;\n}\nconst lastSend = flow.get(\"a770_last_send\") || 0;\n\n// Someone changed the setpoint at the wall while we were holding: step\n// aside so a766 can adopt it into the helper, then decide again.\nif (holding && isEval && hw === \"heat\" && isFinite(hwSp) && !atHold &&\n    nowMs - lastSend >= ECHO_MS) {\n    flow.set(\"a770_hold\", false);\n    flow.set(\"a770_yield_at\", nowMs);\n    node.status({ fill: \"blue\", shape: \"ring\", text: \"wall change \" + hwSp + \": yielding\" });\n    return null;\n}\nconst yielding = nowMs - (flow.get(\"a770_yield_at\") || 0) < YIELD_MS;\n\nconst eligible = night && heatSide && fresh && !yielding &&\n    isFinite(heat) && heat > HOLD_SP + 0.25;\nlet want = eligible && (holding ? bedroom > heat + RELEASE : bedroom >= heat + MARGIN);\nif (want !== holding && heatSide &&\n    nowMs - (flow.get(\"a770_last_flip\") || 0) < MIN_FLIP_MS) {\n    want = holding;   // anti-short-cycle\n}\nif (want !== holding) flow.set(\"a770_last_flip\", nowMs);\n// only record a \"not holding\" verdict once the thermostat has been seen;\n// before that the hardware setpoint may still be the record of a hold\nif (want || cache[CLIMATE] || flow.get(\"a770_hold\") !== undefined) flow.set(\"a770_hold\", want);\n\nlet cmd = null;\nif (want) {\n    if (!holding) cmd = HOLD_SP;\n} else if (isFinite(heat) && ((holding && hw === \"heat\") || isPush)) {\n    cmd = heat;\n}\nconst why = !night ? \"day\" : !fresh ? \"no bedroom reading\" : \"bedroom \" + bedroom;\nnode.status(want\n    ? { fill: \"yellow\", shape: \"dot\", text: \"holding heat off (bedroom \" + bedroom + \", heat \" + heat + \")\" }\n    : { fill: \"green\", shape: \"ring\", text: \"not holding (\" + why + \")\" });\nif (cmd === null) return null;\nflow.set(\"a770_last_send\", nowMs);\nmsg.heatCmd = cmd;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 4320,
+        "wires": [
+            [
+                "a6b134969ff4b2a0"
+            ]
+        ]
+    },
+    {
+        "id": "a770000000000010",
+        "type": "function",
+        "z": "368e45adda3836be",
+        "x_test_only": true,
+        "name": "TEST set veto clock / reset",
+        "func": "if (msg.reset) {\n    [\"a770_last_flip\", \"a770_last_send\", \"a770_yield_at\",\n     \"a770_charged_at\"].forEach(k => flow.set(k, undefined));\n    return null;\n}\nconst p = msg.payload;\nflow.set(\"a770_test_clock\", p && p.minutes !== undefined ? p : undefined);\nreturn { vetoTick: true };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 4460,
+        "wires": [
+            [
+                "a770000000000003"
+            ]
+        ]
+    },
+    {
+        "id": "a770000000000011",
+        "type": "inject",
+        "z": "368e45adda3836be",
+        "name": "TEST clock Tue 11:30 PM",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 4420,
+        "wires": [
+            [
+                "a770000000000010"
+            ]
+        ],
+        "payload": "{\"day\": 2, \"minutes\": 1410}",
+        "payloadType": "json",
+        "x_test_only": true
+    },
+    {
+        "id": "a770000000000012",
+        "type": "inject",
+        "z": "368e45adda3836be",
+        "name": "TEST clock Tue 5:00 AM",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 4460,
+        "wires": [
+            [
+                "a770000000000010"
+            ]
+        ],
+        "payload": "{\"day\": 2, \"minutes\": 300}",
+        "payloadType": "json",
+        "x_test_only": true
+    },
+    {
+        "id": "a770000000000013",
+        "type": "inject",
+        "z": "368e45adda3836be",
+        "name": "TEST clock Tue 7:30 AM",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 4500,
+        "wires": [
+            [
+                "a770000000000010"
+            ]
+        ],
+        "payload": "{\"day\": 2, \"minutes\": 450}",
+        "payloadType": "json",
+        "x_test_only": true
+    },
+    {
+        "id": "a770000000000014",
+        "type": "inject",
+        "z": "368e45adda3836be",
+        "name": "TEST clock Tue 2:00 PM",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 4540,
+        "wires": [
+            [
+                "a770000000000010"
+            ]
+        ],
+        "payload": "{\"day\": 2, \"minutes\": 840}",
+        "payloadType": "json",
+        "x_test_only": true
+    },
+    {
+        "id": "a770000000000015",
+        "type": "inject",
+        "z": "368e45adda3836be",
+        "name": "TEST clock real",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 4580,
+        "wires": [
+            [
+                "a770000000000010"
+            ]
+        ],
+        "payload": "{}",
+        "payloadType": "json",
+        "x_test_only": true
+    },
+    {
+        "id": "a770000000000016",
+        "type": "inject",
+        "z": "368e45adda3836be",
+        "name": "TEST reset veto timers",
+        "props": [
+            {
+                "p": "reset",
+                "v": "true",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 4620,
+        "wires": [
+            [
+                "a770000000000010"
+            ]
+        ],
         "x_test_only": true
     }
 ]
